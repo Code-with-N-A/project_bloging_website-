@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project Bloging Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .language-marquee {
+      width: 100%;
+      overflow: hidden;
+      background-color: whitesmoke; /* Updated background color */
+      padding: 20px 0;
+      color: black;
+    }
+
+    .marquee-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .marquee-content, .marquee-content-2 {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee-left 15s linear infinite;
+    }
+
+    .marquee-content-2 {
+      animation: marquee-right 16s linear infinite;
+    }
+
+    .marquee-content i, .marquee-content-2 i {
+      font-size: 40px; /* Updated icon size for both lines */
+      margin:  20px;
+    }
+
+    /* Colors for each icon */
+    .fa-python { color: #306998; }
+    .fa-js-square { color: #f0db4f; }
+    .fa-java { color: #f89820; }
+    .fa-html5 { color: #e34c26; }
+    .fa-css3-alt { color: #264de4; }
+    .fa-php { color: #8993be; }
+    .fa-node { color: #68a063; }
+    .fa-react { color: #61dbfb; }
+    .fa-angular { color: #dd1b16; }
+    .fa-github { color: #4078c0; }
+    .fa-linux { color: #f7d038; }
+    .fa-docker { color: #2496ed; }
+    .fa-rust { color: #000000; }
+    .fa-go { color: #00ADD8; }
+    .fa-swift { color: #F05138; }
+    .fa-kotlin { color: #7F52FF; }
+    .fa-vuejs { color: #4FC08D; }
+    .fa-sass { color: #CC6699; }
+    .fa-typescript { color: #3178C6; }
+    .fa-laravel { color: #FF2D20; }
+
+    /* Animation for left to right */
+    @keyframes marquee-left {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+
+    /* Animation for right to left */
+    @keyframes marquee-right {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(100%); }
+    }
+
+
+        body {
+            background-color: #0b0c10;
+            color: white;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        @keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%); /* Start from the left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* End at normal position */
+    }
+}
+
+       
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #66fcf1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero h1 {
+            z-index: 1;
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        .hero p {
+            z-index: 1;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        /* Main Content Section */
+        .content {
+            padding: 100px 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            background-color: whitesmoke;
+        }
+
+        .content-box {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            color: black;
+        }
+
+        .content-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+            
+        }
+
+        .content-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            font-size: 1rem;
+            color: #0b0c10;
+        }
+
+        /* Footer */
+     
+
+        /* Animations */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Toggle Menu */
+       
+        .image-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto; /* Center the container */
+}
+
+.background-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 40%; /* Center vertically */
+    left: 30%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust positioning */
+    color: black;
+    text-align: center;
+    width: 90%; /* Make sure text doesn't overflow on small screens */
+    padding: 10px; /* Add some padding */
+    margin-top: 30px;
+   
+}
+
+/* Responsive Text */
+.overlay-text h1 {
+    font-size: 6vw; /* Font size relative to viewport width */
+    margin: 0;
+}
+
+.overlay-text p {
+    font-size: 3vw; /* Font size relative to viewport width */
+    margin: 10px 0 0 0;
+    margin-bottom: 20px;
+}
+
+/* Media Queries for Smaller Devices */
+@media (max-width: 768px) {
+    .overlay-text h1 {
+        font-size: 10vw; /* Increase font size on smaller devices */
+    }
+
+    .overlay-text p {
+        font-size: 6vw; /* Adjust paragraph text size */
+    }
+}
+
+@media (max-width: 480px) {
+    .overlay-text h1 {
+        font-size: 8vw; /* Further increase font size for mobile */
+    }
+
+    .overlay-text p {
+        font-size: 5vw;
+    }
+}
+
+ /* Button Styling */
+  /* Button Styling */
+  .toggle-btn {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 0px;
+            width: 40px;
+            height: 30px;
+            cursor: pointer;
+            z-index: 1002;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn div {
+            width: 70%;
+            height: 3px;
+            background-color: rgb(0, 0, 0);
+            margin: 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Toggle Menu */
+        .toggle-menu {
+            position: fixed;
+            top: 40px;
+            right: -250px;
+            width: 20px;
+            height: 30%;
+            background-color: rgba(0, 0, 0, 0.9);
+            transition: right 0.5s ease;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            margin: 10px;
+        }
+
+        .toggle-menu.active {
+            right: 0;
+        }
+
+        .toggle-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin: 20px 0;
+            animation: blink 1s infinite alternate;
+            transition: color 0.3s ease;
+        }
+
+        .toggle-menu a:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .toggle-menu a:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .toggle-menu a:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .toggle-menu a:nth-child(4) {
+            animation-delay: 0.7s;
+        }
+
+        /* Keyframes for the blinking effect */
+        @keyframes blink {
+            0% {
+                color: #66fcf1;
+            }
+            50% {
+                color: #ff69b4;
+            }
+            100% {
+                color: #ffff00;
+            }
+        }
+
+        /* Media Query for the Toggle Button */
+        @media (max-width: 768px) {
+            .toggle-btn {
+                display: block;
+            }
+
+            .toggle-menu {
+                right: -280px;
+                width: 250px;
+            }
+
+            .toggle-menu.active {
+                right: 0;
+            }
+        }
+
+        /* For Desktop/Laptop Screens */
+        @media (min-width: 769px) {
+            /* Display the menu horizontally for larger screens */
+            .toggle-menu {
+                position: static;
+                width: auto;
+                height: auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 0;
+                background-color: transparent;
+            }
+
+            .toggle-btn {
+                display: none;
+            }
+
+            .toggle-menu a {
+                margin: 0 20px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Animation for Toggle Button when active */
+        .toggle-btn.active div:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
+
+        .toggle-btn.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .toggle-btn.active div:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+        }
+        .i img{
+            width: 15%;
+            text-align: left;
+           border-radius: 50%;
+           position: absolute;
+           padding: 5px;
+           
+          
+        }
+       .b button {
+       padding: 6px;
+       border-radius: 30px;
+       font-size: 2.5vh;
+       border: 8px soli black;
+       background: linear-gradient(rgb(198, 232, 202),rgb(183, 228, 183));
+
+
+
+           
+        }
+        button:hover{
+            background: linear-gradient(rgb(122, 190, 210),rgb(117, 203, 203));
+        }
+        img{
+            width: 100%;
+        }
+        .text{
+            background-color: whitesmoke;
+            color: black;
+            overflow: hidden;
+            padding-top: 40px;
+           
+        }
+        .text h2{
+            padding: 20px;
+
+        }
+        .text p{
+            padding: 20px;
+            font-size: larger;
+        }
+        
+    .marquee-wrapper {
+      width: 100%;
+      overflow: hidden;
+      background-color: lavender;
+      padding: 20px 0;
+    }
+
+    .marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 10s linear infinite;
+}
+
+    
+
+    .marquee-content .marquee-item {
+      display: inline-block;
+      background-color: whitesmoke;
+      padding: 20px;
+      margin: 0 20px;
+      width: 150px;
+      text-align: center;
+      border-radius: 1px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .marquee-content .marquee-item img {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .marquee-content .marquee-item h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: black;
+    }
+
+    .marquee-content .marquee-item p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    @keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+.fo {
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .stars {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .stars input[type="radio"] {
+            display: none;
+        }
+
+        .stars label {
+            font-size: 35px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .stars input[type="radio"]:checked ~ label {
+            color: gold;
+        }
+
+        .stars input[type="radio"]:checked ~ label:hover {
+            color: darkorange;
+        }
+
+        .description {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .progress-bar-container {
+            margin: 20px 0;
+            width: 80%;
+        }
+
+        .progress-bar1 {
+            width: 100%;
+            background-color: #e0e0e0;
+            overflow: hidden;
+        }
+
+        .progress1 {
+            width: 0%;
+            height: 10px;
+            background-color: #4caf50;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .indicator {
+            text-align: right;
+            font-size: 12px;
+            color: #666;
+           
+        }
+
+        .feedback-section {
+            margin: 20px 0;
+            text-align: center;
+           
+        }
+
+        .feedback-section textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .reset-btn {
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background-color: #cc0000;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form input, form textarea {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        form input[type="submit"] {
+            width: auto;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .badge-progress {
+            background-color: #e0e0e0;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 7px;
+            background-color: #4caf50;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        .badge-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .badge-stats {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .badge-stats span {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 50px 0;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            width: 25%;
+            padding: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ff9800;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #aaa;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #ff9800;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 18px;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ff9800;
+        }
+
+        .footer-menu ul {
+            list-style: none;
+        }
+
+        .footer-menu ul li {
+            margin-bottom: 10px;
+        }
+
+        .newsletter input[type="email"] {
+            padding: 10px;
+            border: none;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+
+        .newsletter button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ff9800;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .newsletter button:hover {
+            background-color: #e67e00;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        @media(max-width: 768px) {
+            .footer-section {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+     <!-- Toggle Button -->
+    
+
+    <div class="image-container">
+        <div class="toggle-btn" id="toggle-btn">
+            <div></div>
+            <div></div>
+            <div></div>
+            
+            <div></div>
+        </div>
+    
+        <!-- Toggle Menu -->
+        <div class="toggle-menu" id="toggle-menu">
+            <a href="index.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="servises.html">Services</a>
+            <a href="contect.html">Contact</a>
+        </div>
+    
+        
+        <div class="i">
+            <img src="img/logo2.png" alt="logo">
+
+           </div>
+        <img class="background-image" src="img/Grey and Black Simple Digital Marketing Tools Blog Banner(1).png" alt="img">
+        <div class="overlay-text">
+           
+
+            <h1>Welcome </a></h1>
+            <p>bloging Website</p>
+            <div class="b">
+                <button onclick="explor()">Explore More</button>
+            </div>
+                
+           </div>
+    </div>
+    <div class="text">
+        <h2> Bloging</h2>
+        <p><strong style="color: red;">CodeWith_N.A </strong>is your one-stop destination for mastering programming. We provide comprehensive tutorials, real-world projects, and coding challenges designed for both <strong>beginners and experienced developers.</strong> Our platform covers a variety of programming languages, helping you enhance your skills and build practical solutions. With interactive tools and a supportive community, you'll have everything you need to excel in coding. Start your programming journey with us today and unlock your full potential as a coder!</p>
+    </div>
+   
+<div class="language-marquee">
+    <div class="marquee-container">
+      <!-- First Line - Right to Left -->
+      <div class="marquee-content">
+        <i class="fab fa-python"></i>
+        <i class="fab fa-js-square"></i>
+        <i class="fab fa-java"></i>
+        <i class="fab fa-html5"></i>
+        <i class="fab fa-css3-alt"></i>
+        <i class="fab fa-php"></i>
+        <i class="fab fa-node"></i>
+        <i class="fab fa-react"></i>
+        <i class="fab fa-angular"></i>
+        <i class="fab fa-github"></i>
+        <i class="fab fa-linux"></i>
+      </div>
+  
+      <!-- Second Line - Left to Right -->
+      <div class="marquee-content-2">
+        <i class="fab fa-docker"></i>
+        <i class="fab fa-rust"></i>
+        <i class="fab fa-go"></i>
+        <i class="fab fa-swift"></i>
+        <i class="fab fa-kotlin"></i>
+        <i class="fab fa-vuejs"></i>
+        <i class="fab fa-angular"></i>
+        <i class="fab fa-sass"></i>
+        <i class="fab fa-typescript"></i>
+        <i class="fab fa-laravel"></i>
+        <i class="fab fa-bookmark"></i>
+      </div>
+    </div>
+  </div>
+  <video width="100%" controls autoplay loop>
+    <source src="img/Black and Blue Neon Technology Video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<div class="text">
+    <h2>Discover Projects to Boost Your Coding Expertise</h2>
+    <p>At <strong style="color: red;">CodeWitg_N.A</strong>, we offer a variety of coding projects to enhance your development skills.<strong>Explore our task manager, full_stack, bill generation system</strong>, and other feature-rich applications that cover front-end, back-end, and database integration. These projects will give you practical experience in building dynamic and scalable web applications. Whether you're a beginner or an advanced developer, our projects are designed to take your coding skills to the next level. Start your journey with our hands-on projects today!
+        </p>
+</div>
+<video width="100%" controls id="myVideo">
+    <source src="img/VN20241121_182837.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+  
+
+    <section class="content">
+        <div class="content-box">
+            <img src="img/Untitled.jpg" alt="img">
+            <h3>Exclusive Design</h3>
+            <p>Our designs are carefully crafted to make an impact and leave a lasting impression.</p>
+        </div>
+        <div class="content-box">
+            <img src="img/istockphoto-1371339413-612x612.jpg" alt="">
+            <h3>Premium Features</h3>
+            <p>Experience cutting-edge features that elevate your web presence to the next level.</p>
+        </div>
+        <div class="content-box">
+            <img src="img/web-development-coding-programming-internet-technology-business-concept-web-development-coding-programming-internet-technology-122084136.webp" alt="">
+            <h3>Custom Solutions</h3>
+            <p>Tailor-made solutions that perfectly match your brand and business objectives.</p>
+        </div>
+    </section>
+
+    
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+      <!-- First Div -->
+      <div class="marquee-item">
+       
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">
+            <div class="badge-title">Python</div>
+            <div class="badge-stats">Projects: <span>10</span></div>
+            <div class="badge-progress">
+                <div class="progress-bar" style="width: 80%;"></div>
+            </div>
+       
+      </div>
+  
+      <!-- Second Div -->
+      <div class="marquee-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript Logo">
+                <div class="badge-title">JavaScript</div>
+                <div class="badge-stats">Projects: <span>15</span></div>
+                <div class="badge-progress">
+                    <div class="progress-bar" style="width: 65%;"></div>
+                </div>
+      </div>
+  
+      <!-- Third Div -->
+      <div class="marquee-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML Logo">
+                <div class="badge-title">HTML & CSS</div>
+                <div class="badge-stats">Projects: <span>20</span></div>
+                <div class="badge-progress">
+                    <div class="progress-bar" style="width: 90%;"></div>
+                </div>
+      </div>
+  
+      <!-- Fourth Div -->
+      <div class="marquee-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="C++ Logo">
+                <div class="badge-title">C++</div>
+                <div class="badge-stats">Projects: <span>8</span></div>
+                <div class="badge-progress">
+                    <div class="progress-bar" style="width: 50%;"></div>
+                </div>
+      </div>
+      <div class="marquee-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg" alt="Ruby Logo">
+        <div class="badge-title">Ruby</div>
+                <div class="badge-stats">Projects: <span>8</span></div>
+                <div class="badge-progress">
+                    <div class="progress-bar" style="width: 90%;"></div>
+                </div>
+      </div>
+  
+    </div>
+
+
+  <div class="fo">
+    <div class="header">
+        <h2>Rate This Website</h2>
+    </div>
+
+    <form action="mailto:codewithna73@gmail.com" method="post" enctype="text/plain">
+        <!-- Rating Stars -->
+        <div class="stars">
+            <input type="radio" id="star5" name="rating" value="5">
+            <label for="star5">★</label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4">★</label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3">★</label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2">★</label>
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1">★</label>
+        </div>
+
+        <!-- Description -->
+        <p class="description">Please give your valuable rating for this video.</p>
+
+        <!-- Progress Bar (Indicator) -->
+        <div class="progress-bar-container">
+            <div class="progress-bar1">
+                <div class="progress1" id="progress"></div>
+            </div>
+            <div class="indicator" id="indicator">0% Rated</div>
+        </div>
+
+        <!-- Name and Email -->
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+
+        <!-- Feedback Section -->
+        <textarea name="feedback" rows="3" placeholder="Provide your feedback..."></textarea>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit Rating">
+    </form>
+
+    <div class="button-container">
+        <button class="reset-btn" onclick="resetForm()">Reset</button>
+    </div>
+</div>
+  
+
+<footer>
+    <div class="footer-container">
+
+        <!-- About Section -->
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <p>We provide quality programming blogs, tutorials, and code examples to help developers enhance their skills.</p>
+            <div class="social-icons">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="https://t.me/CodwithNA" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin-in"></a>
+                <a href="https://github.com/" class="fab fa-github"></a>
+                <a href="https://www.instagram.com/code_with_n.a/profilecard/?igsh=MTQzMzQ1N3RyejFweg==" class="fab fa-instagram"></a>
+                <a href="https://youtube.com/@codewith.n.a.73?si=It2wUQbQQHYMel69" class="fab fa-youtube"></a> 
+               
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:codewithna73@gmail.com">codewithna73@gmail.com</a></p>
+            <p>Phone: <a href="tel:+919303546247">9303546247</a></p>
+            <p>Address: mp balaghat katangi 481449</p>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="footer-section footer-menu">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="explor.html">Blogs</a></li>
+                <li><a href="contect.html">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="footer-section newsletter">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter to get the latest updates directly to your inbox.</p>
+            <form>
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Code with N.A. All Rights Reserved.</p>
+    </div>
+</footer>
+
+    <script>
+        const toggleBtn = document.getElementById('toggle-btn');
+        const toggleMenu = document.getElementById('toggle-menu');
+
+        toggleBtn.addEventListener('click', function() {
+            toggleMenu.classList.toggle('active');
+            toggleBtn.classList.toggle('active');
+        });
+
+        function explor (){
+            window.location.href="explor.html";
+        }
+
+
+         // Video ko observe karne ke liye Intersection Observer banaye
+         const video = document.getElementById('myVideo');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            video.play(); // Video visible hone par play kare
+        } else {
+            video.pause(); // Video hidden hone par pause kare
+        }
+    });
+});
+
+// Video element ko observe karein
+observer.observe(video);
+
+
+// indicetor 
+const stars = document.querySelectorAll('.stars input');
+        const progress = document.getElementById('progress');
+        const indicator = document.getElementById('indicator');
+        let ratingValue = 0;
+
+        stars.forEach((star) => {
+            star.addEventListener('change', () => {
+                ratingValue = star.value * 20; // Convert star rating to percentage
+                progress.style.width = ratingValue + '%';
+                indicator.innerText = ratingValue + '% Rated';
+            });
+        });
+
+        function resetForm() {
+            document.querySelector('form').reset(); // Reset the form
+            progress.style.width = '0%';
+            indicator.innerText = '0% Rated';
+        }
+    </script>
+
+</body>
+</html>
