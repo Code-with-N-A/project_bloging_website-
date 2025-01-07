@@ -180,150 +180,109 @@
 
         /* Footer Section */
         footer {
-    background-color: #111;
-    color: #fff;
-    padding: 40px 0;
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box;
-}
+            background-color: #111;
+            color: #fff;
+            padding: 40px 0;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-.footer-container {
-    display: flex;
-    flex-wrap: wrap; /* Responsive behavior ke liye */
-    justify-content: space-between; /* Space ko achhe se distribute karne ke liye */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px; /* Extra padding for responsiveness */
-    box-sizing: border-box;
-}
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
 
-.footer-section {
-    flex: 1;
-    padding: 20px;
-    min-width: 250px; /* Small screens ke liye minimum width */
-    box-sizing: border-box;
-}
+        .footer-section {
+            flex: 1;
+            padding: 20px;
+            min-width: 250px;
+            box-sizing: border-box;
+        }
 
-.footer-section h3 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    color: #f1c40f;
-}
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            color: #f1c40f;
+        }
 
-.footer-section p,
-.footer-section ul {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #bbb;
-}
+        .footer-section p,
+        .footer-section ul {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #bbb;
+        }
 
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
 
-.footer-section ul li {
-    margin-bottom: 10px;
-}
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
 
-.footer-section ul li a {
-    color: #fff;
-    text-decoration: none;
-}
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
 
-.footer-section ul li a:hover {
-    color: #f1c40f;
-}
+        .footer-section ul li a:hover {
+            color: #f1c40f;
+        }
 
-.footer-section .social-icons {
-    display: flex;
-    justify-content: center; /* Center the icons */
-    gap: 15px; /* Space between icons */
-}
+        .footer-section .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
 
-.footer-section .social-icons a {
-    font-size: 1.5rem;
-    color: #fff;
-    transition: color 0.3s ease;
-}
+        .footer-section .social-icons a {
+            font-size: 1.5rem;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
 
-.footer-section .social-icons a:hover {
-    color: #f1c40f;
-}
+        .footer-section .social-icons a:hover {
+            color: #f1c40f;
+        }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.9rem;
-    border-top: 1px solid #444;
-    padding-top: 20px;
-}
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+        }
 
-/* Media Queries for Responsive Design */
+        /* Media Queries for Responsive Design */
+        @media (max-width: 1024px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
 
-/* Large Tablets and Smaller Desktops */
-@media (max-width: 1024px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-    }
+            .footer-section {
+                margin-bottom: 20px;
+                max-width: 100%;
+                text-align: center;
+            }
 
-    .footer-section {
-        margin-bottom: 20px;
-        max-width: 100%;
-        text-align: center; /* Center text on smaller screens */
-    }
+            .footer-section h3 {
+                font-size: 1.3rem;
+            }
 
-    .footer-section h3 {
-        font-size: 1.3rem;
-    }
+            .footer-section ul li a {
+                font-size: 0.95rem;
+            }
+        }
 
-    .footer-section ul li a {
-        font-size: 0.95rem;
-    }
-}
-
-/* Mobile Devices */
-@media (max-width: 768px) {
-    .footer-section {
-        min-width: 100%; /* Full width for small screens */
-        text-align: center; /* Center text on small screens */
-    }
-
-    .footer-section h3 {
-        font-size: 1.2rem;
-    }
-
-    .footer-section ul li a {
-        font-size: 0.9rem;
-    }
-
-    .footer-section .social-icons a {
-        margin: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    footer {
-        padding: 20px 0;
-    }
-
-    .footer-section h3 {
-        font-size: 1.1rem;
-    }
-
-    .footer-section ul li a {
-        font-size: 0.85rem;
-    }
-
-    .footer-bottom {
-        font-size: 0.8rem;
-    }
-}
-
-        /* Media Queries for responsiveness */
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -349,6 +308,23 @@
             #map {
                 height: 40vh;
             }
+
+            .footer-section {
+                min-width: 100%;
+                text-align: center;
+            }
+
+            .footer-section h3 {
+                font-size: 1.2rem;
+            }
+
+            .footer-section ul li a {
+                font-size: 0.9rem;
+            }
+
+            .footer-section .social-icons a {
+                margin: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -357,33 +333,27 @@
             }
 
             p {
-                font-size: 3.5vw;
+                font-size: 3vw;
             }
 
-            .card-container {
-                gap: 15px;
+            .footer-section h3 {
+                font-size: 1rem;
             }
 
-            .card {
-                width: 100%;
-                max-width: 280px;
-            }
-
-            #map {
-                height: 35vh;
+            .footer-section ul li a {
+                font-size: 0.85rem;
             }
         }
     </style>
 </head>
 <body>
-
     <!-- Main Content Section -->
     <div class="container">
         <h1 class="typing" id="typedMessage"></h1> <!-- Typing effect here -->
         <p>Explore the map of Katangi, Balaghat (481449). Discover the beautiful location and learn more about this region.</p>
         
         <!-- Google Map -->
-        <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14821.09308678328!2d79.79177004199828!3d21.769682258645886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2ae8de48668353%3A0x969a9c4d3bf6641f!2z4KSV4KSf4KSC4KSX4KWALCDgpK7gpKfgpY3gpK8g4KSq4KWN4KSw4KSm4KWH4KS2IDQ4MTQ0NQ!5e0!3m2!1shi!2sin!4v1736246743521!5m2!1shi!2sin" width="400" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14821.09308678328!2d79.79177004199828!3d21.769682258645886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2ae8de48668353%3A0x969a9c4d3bf6641f!2z4KSV4KSf4KSC4KSX4KWALCDgpK7gpKfgpY3gpK8g4KSq4KWN4KSw4KSm4KWH4KS2IDQ4MTQ0NQ!5e0!3m2!1shi!2sin!4v1736246743521!5m2!1shi!2sin"width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
 
         <div class="card-container">
             <div class="card">

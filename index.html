@@ -1150,20 +1150,15 @@ const stars = document.querySelectorAll('.stars input');
 
         // Function to display updates in the modal
         function showUpdates() {
-            if (!localStorage.getItem('visited')) {
-                const updatesContainer = document.getElementById('updatesContainer');
-                updates.forEach(update => {
-                    const updateElement = document.createElement('p');
-                    updateElement.innerHTML = `${update.message} <a href="${update.url}" class="blink" target="_blank">NEW</a>`;
-                    updatesContainer.appendChild(updateElement);
-                });
+            const updatesContainer = document.getElementById('updatesContainer');
+            updates.forEach(update => {
+                const updateElement = document.createElement('p');
+                updateElement.innerHTML = `${update.message} <a href="${update.url}" class="blink" target="_blank">NEW</a>`;
+                updatesContainer.appendChild(updateElement);
+            });
 
-                // Display the modal
-                document.getElementById('updateModal').style.display = 'block';
-
-                // Mark that the user has visited
-                localStorage.setItem('visited', 'true');
-            }
+            // Display the modal
+            document.getElementById('updateModal').style.display = 'block';
         }
 
         // Close the modal when user clicks the close button
