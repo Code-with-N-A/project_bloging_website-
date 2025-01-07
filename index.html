@@ -752,11 +752,75 @@
             }
         }
 
+         /* Modal styles */
+         .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            color: rgb(0, 0, 0);
+        }
+
+        /* Close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+        }
+
+        /* Blinking "NEW" message */
+        .blink {
+            font-weight: bold;
+            color: red;
+            animation: blink-animation 1s steps(5, start) infinite;
+        }
+
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        /* Modal open button */
+        #openModalBtn {
+            display: none;
+        }
+
 
 
     </style>
 </head>
 <body>
+     <!-- Modal structure -->
+     <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Latest Updates</h2>
+            <div id="updatesContainer"></div>
+        </div>
+    </div>
      <!-- Toggle Button -->
     
 
@@ -942,7 +1006,7 @@
         </div>
 
         <!-- Description -->
-        <p class="description">Please give your valuable rating for this video.</p>
+        <p class="description">Please give your valuable rating for this Website.</p>
 
         <!-- Progress Bar (Indicator) -->
         <div class="progress-bar-container">
@@ -983,6 +1047,7 @@
                 <a href="https://github.com/" class="fab fa-github"></a>
                 <a href="https://www.instagram.com/code_with_n.a/profilecard/?igsh=MTQzMzQ1N3RyejFweg==" class="fab fa-instagram"></a>
                 <a href="https://youtube.com/@codewith.n.a.73?si=It2wUQbQQHYMel69" class="fab fa-youtube"></a> 
+                <a href="map.html"> <i class="fas fa-map-marker-alt"></i></a> 
                
             </div>
         </div>
@@ -1013,7 +1078,7 @@
             <h3>Newsletter</h3>
             <p>Subscribe to our newsletter to get the latest updates directly to your inbox.</p>
             <form>
-                <input type="email" placeholder="Enter your email">
+                <input  type="email" placeholder="Enter your email">
                 <button type="submit">Subscribe</button>
             </form>
         </div>
@@ -1075,6 +1140,47 @@ const stars = document.querySelectorAll('.stars input');
             progress.style.width = '0%';
             indicator.innerText = '0% Rated';
         }
+
+
+         // Updates array containing messages and their corresponding URLs
+         const updates = [
+            { message: "New feature: Update location page", url: "map.html" },
+            { message: "Update servies page", url: "servises.html" },
+        ];
+
+        // Function to display updates in the modal
+        function showUpdates() {
+            if (!localStorage.getItem('visited')) {
+                const updatesContainer = document.getElementById('updatesContainer');
+                updates.forEach(update => {
+                    const updateElement = document.createElement('p');
+                    updateElement.innerHTML = `${update.message} <a href="${update.url}" class="blink" target="_blank">NEW</a>`;
+                    updatesContainer.appendChild(updateElement);
+                });
+
+                // Display the modal
+                document.getElementById('updateModal').style.display = 'block';
+
+                // Mark that the user has visited
+                localStorage.setItem('visited', 'true');
+            }
+        }
+
+        // Close the modal when user clicks the close button
+        document.getElementById('closeModal').onclick = function() {
+            document.getElementById('updateModal').style.display = 'none';
+        };
+
+        // Close the modal if user clicks anywhere outside of the modal content
+        window.onclick = function(event) {
+            const modal = document.getElementById('updateModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+
+        // Call the function when the page loads
+        window.onload = showUpdates;
     </script>
 
 </body>
