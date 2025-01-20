@@ -1,324 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Prime Projects - Learn Coding with Real Projects</title>
-        <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
-       
-        <meta name="description" content="Prime Projects offers hands-on coding projects and tutorials for developers. Explore web development, software engineering, and more.">
-        <meta name="keywords" content="coding projects, web development, programming tutorials, developer tutorials, software solutions">
-        <meta name="author" content="Prime Projects">
-        <meta name="robots" content="index, follow">
-        
-        <!-- Canonical URL -->
-        <link rel="canonical" href="https://primeprojects.netlify.app"> <!-- Aapki website ka URL -->
-        
-        <!-- Open Graph for social media optimization -->
-        <meta property="og:title" content="Prime Projects - Learn Coding with Real Projects">
-        <meta property="og:description" content="Explore coding projects, tutorials, and solutions for developers at Prime Projects.">
-        <meta property="og:image" content="https://primeprojects.netlify.app/images/logo2.png"> <!-- Open Graph image ka URL -->
-        <meta property="og:url" content="https://primeprojects.netlify.app">
-        <meta property="og:type" content="website">
-        
-        <!-- Twitter Card -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Prime Projects - Learn Coding with Real Projects">
-        <meta name="twitter:description" content="Learn and explore coding projects and tutorials with Prime Projects.">
-        <meta name="twitter:image" content="https://primeprojects.netlify.app/images/logo2.png"> <!-- Twitter image ka URL -->
-         <!--googel ads -->
-         <meta name="google-adsense-account" content="ca-pub-7349873955018673">
-    </head>
-    
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHYT52RRYW"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-KHYT52RRYW');
-</script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: lavender;
-            color: black;
-            font-size: 16px;
-        }
-
-        /* Header */
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: rgb(255, 255, 255);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
-        }
-
-        header h1 {
-            font-size: 3.5rem;
-            color: black;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: black;
-        }
-
-        /* Contact Form Section */
-        .contact-form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 50px 20px;
-            background-color: rgb(195, 195, 231);
-        }
-
-        .form-container {
-            background-color: rgb(199, 199, 253);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .form-container h2 {
-            color: black;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .form-container label {
-            font-size: 1.1rem;
-            color: #c5c6c7;
-            margin-bottom: 5px;
-        }
-
-        .form-container input,
-        .form-container textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            background-color: #000000;
-            border: 1px solid #66fcf1;
-            border-radius: 10px;
-            color: white;
-            font-size: 1rem;
-            resize: none;
-        }
-
-        .form-container textarea {
-            height: 150px;
-        }
-
-        .form-container button {
-            padding: 15px 30px;
-            background-color: lavender;
-            color: #0b0c10;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-container button:hover {
-            background-color: #45a29e;
-        }
-
-        /* Footer */
-      
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            header p {
-                font-size: 1rem;
-            }
-        }
-
-        footer {
-    background-color: #111;
-    color: #fff;
-    padding: 40px 0;
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap; /* Responsive behavior ke liye */
-    justify-content: space-between; /* Space ko achhe se distribute karne ke liye */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px; /* Extra padding for responsiveness */
-    box-sizing: border-box;
-}
-
-.footer-section {
-    flex: 1;
-    padding: 20px;
-    min-width: 250px; /* Small screens ke liye minimum width */
-    box-sizing: border-box;
-}
-
-.footer-section h3 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    color: #f1c40f;
-}
-
-.footer-section p,
-.footer-section ul {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #bbb;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 10px;
-}
-
-.footer-section ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.footer-section ul li a:hover {
-    color: #f1c40f;
-}
-
-.footer-section .social-icons {
-    display: flex;
-    justify-content: center; /* Center the icons */
-    gap: 15px; /* Space between icons */
-}
-
-.footer-section .social-icons a {
-    font-size: 1.5rem;
-    color: #fff;
-    transition: color 0.3s ease;
-}
-
-.footer-section .social-icons a:hover {
-    color: #f1c40f;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.9rem;
-    border-top: 1px solid #444;
-    padding-top: 20px;
-}
-
-/* Media Queries for Responsive Design */
-
-/* Large Tablets and Smaller Desktops */
-@media (max-width: 1024px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Projects - Learn Coding with Real Projects</title>
+  <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  <meta name="description" content="Prime Projects offers hands-on coding projects and tutorials for developers. Explore web development, software engineering, and more.">
+  <meta name="keywords" content="coding projects, web development, programming tutorials, developer tutorials, software solutions">
+  <meta name="author" content="Prime Projects">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://primeprojects.netlify.app"> <!-- Aapki website ka URL -->
+  
+  <!-- Open Graph for social media optimization -->
+  <meta property="og:title" content="Prime Projects - Learn Coding with Real Projects">
+  <meta property="og:description" content="Explore coding projects, tutorials, and solutions for developers at Prime Projects.">
+  <meta property="og:image" content="https://primeprojects.netlify.app/images/logo2.png"> <!-- Open Graph image ka URL -->
+  <meta property="og:url" content="https://primeprojects.netlify.app">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prime Projects - Learn Coding with Real Projects">
+  <meta name="twitter:description" content="Learn and explore coding projects and tutorials with Prime Projects.">
+  <meta name="twitter:image" content="https://primeprojects.netlify.app/images/logo2.png"> <!-- Twitter image ka URL -->
+   <!--googel ads -->
+   <meta name="google-adsense-account" content="ca-pub-7349873955018673">
+  <title>About me</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Loader CSS */
+    #loader {
+      display: none;
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+      margin: auto;
+      text-align: center;
     }
-
-    .footer-section {
-        margin-bottom: 20px;
-        max-width: 100%;
-        text-align: center; /* Center text on smaller screens */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
-
-    .footer-section h3 {
-        font-size: 1.3rem;
-    }
-
-    .footer-section ul li a {
-        font-size: 0.95rem;
-    }
-}
-    </style>
+  </style>
 </head>
 <body>
+  
+   
 
-    <!-- Header -->
-    <header>
-        <h1>Contact Us</h1>
-        <p>Get in touch with us for inquiries, feedback, or any other questions.</p>
-    </header>
+  <!-- Header Section -->
+  <header>
+    <h1>Your data my story</h1>
+   
+  </header>
+   <!-- Loader (Hidden by Default) -->
+   <div id="loader"></div>
 
-    <!-- Contact Form Section -->
-    <section class="contact-form">
-        <div class="form-container">
-            <h2>Contact Form</h2>
-            <form action="mailto:codewithna73@gmail.com" method="post" enctype="text/plain">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required placeholder="Enter your name">
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Contact Form Section (Initially Displayed) -->
+    <div id="contactForm" class="form-container">
+      <h3>Contact Form</h3>
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your name">
 
-                <label for="email">Your Email</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your  email ">
 
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number" pattern="[0-9]{10}">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number ">
 
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required placeholder="Write your message here"></textarea>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
 
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section about">
-                <h3>About Us</h3>
-                <p>
-                    Welcome to our  website. We are dedicated to providing quality education and fostering a learning environment that helps students excel in their careers.
-                </p>
-            </div>
-            <div class="footer-section links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="About.html">About Us</a></li>
-                    <li><a href="explor.html">Projects</a></li>
-                    <li><a href="contect.html">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section social">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="https://t.me/CodwithNA"><i class="fab fa-telegram"></i></a>
-                    <a href="https://youtube.com/@codewith.n.a.73?si=It2wUQbQQHYMel69"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/codewith_n.a?igsh=NDRveWJsMGR2M3E3"><i class="fab fa-instagram"></i></a>
-                    <a href="https://github.com/"><i class="fab fa-github"></i></a>
-                    <a href="map.html"> <i class="fas fa-map-marker-alt"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 CodeWith_N.A. All rights reserved.</p>
-        </div>
-    </footer>
 
+    <!-- Thank You Message -->
+    <div id="thankYouMessage" style="display:none;">
+      <h4>Thank You for Reaching Out!</h4>
+      <p>Your information has been submitted successfully. We will get back to you shortly.</p>
+    </div>
+
+    <!-- User Data Section (Initially Hidden) -->
+    <div id="userData" style="display:none;">
+      <h3>User Data:</h3>
+      <p><strong>Dear:</strong> <span id="displayName"></span></p>
+      <p><span>I hope you're doing well and having a wonderful day!
+
+        Thank you so much for reaching out to us! We truly appreciate your inquiry,
+         and it’s our pleasure to assist you in any way we can. I am here to ensure that 
+         your experience with us is nothing less than excellent.</span></p>
+         <p><strong>Here are the details you’ve requested:</strong></p>
+         <p><span>I want you to know that we are committed to providing the best support possible,
+          and if you need any further information, clarification, or assistance,
+          please don’t hesitate to get in touch. Your satisfaction and ease are our top priority,
+          and we’re always here to make sure your experience is seamless and pleasant.</span></p>
+          <p><span>Feel free to reply to this email or contact us directly. We are more than happy to assist you further!</span></p>
+          <p><strong>Thank you once again for your trust and communication.</strong></p>
+          <p><span>Wishing you a wonderful day ahead!</span></p><br>
+          <p><strong>Best regards,</strong></p>
+      <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+      <p><strong>Phone:</strong> <span id="displayPhone"></span></p>
+      <p><strong>Message:</strong> <span id="displayMessage"></span></p>
+      <p>We appreciate your inquiry and will respond soon.</p>
+    </div>
+
+    <!-- Profile Section (Initially Hidden) -->
+    <div id="profileSection" style="display:none;">
+      <div class="profile-container">
+        <img src="img/IMG_20241103_142348_375.jpg" alt="Profile Image" class="profile-img">
+        <div class="details">
+          <div class="details">
+            <h2>About Me</h2>
+            <p><i class="fas fa-user-circle"></i> Hello! My name is Nitesh Amule, and I am a passionate web developer. I started my journey in web development in 2022. I have a keen interest in learning new technologies and enjoy solving complex problems. Web development excites me, and I love taking on new challenges.</p>
+            
+            <p><i class="fas fa-code"></i> I am proficient in HTML, CSS, JavaScript, React, PHP, Python, MySQL, and several other technologies, which I use to create high-quality websites and applications.</p>
+            
+            <p><i class="fas fa-laptop-code"></i> Skills: Web Development, Full Stack Development, Frontend & Backend, Problem Solving</p>
+            
+            <p><i class="fas fa-briefcase"></i> Experience: Web Development (Since 2022)</p>
+            
+            <p><i class="fas fa-graduation-cap"></i> Technologies: HTML, CSS, JavaScript, React, PHP, Python, MySQL, and more...</p>
+            
+            <p><i class="fas fa-map-marker-alt"></i> Location: [Your City]</p>
+            
+            <p><i class="fas fa-envelope"></i> Contact: niteshamule@example.com</p>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault(); // Form reload ko prevent kare
+  
+      // Form submit hone par loader dikhaye
+      document.getElementById('loader').style.display = 'block';
+  
+      // Get form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const message = document.getElementById('message').value;
+
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("phone", phone);
+      formData.append("message", message);
+  
+      // Send the form data to FormSubmit
+      fetch("https://formsubmit.co/ajax/codewithna73@gmail.com", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        // FormSubmit successful hone ke baad loader hide kare
+        document.getElementById('loader').style.display = 'none';
+  
+        if (data.success) {
+          // Hide contact form and show thank you message
+          document.getElementById('contactForm').style.display = 'none';
+          document.getElementById('thankYouMessage').style.display = 'block';
+  
+          // Display user data
+          document.getElementById('displayName').textContent = name;
+          document.getElementById('displayEmail').textContent = email;
+          document.getElementById('displayPhone').textContent = phone;
+          document.getElementById('displayMessage').textContent = message;
+          document.getElementById('userData').style.display = 'block';
+  
+          // Profile section show kare
+          document.getElementById('profileSection').style.display = 'block';
+          window.scrollTo(0, document.body.scrollHeight); // Scroll to the profile section if needed
+          
+          
+        }
+        // Loader ko hide kare agar error aaye
+        document.getElementById('loader').style.display = 'none';
+        alert("Your message has been successfully submitted.");
+      });
+    }
+  </script>
+  <link rel="stylesheet" href="contect.css">
 
 </body>
 </html>
