@@ -914,6 +914,20 @@
             display: none;
         }
 
+        /* may project h1 */
+        .pro{
+            background-color: lavender;
+            padding: 20px;
+            color: black;
+        }
+        .pro h1{
+            text-align: center;
+            padding: 20px;
+        }
+        .pro p{
+            text-align: left;
+        }
+
 
 
     </style>
@@ -1033,25 +1047,49 @@
             <p>Our designs are carefully crafted to make an impact and leave a lasting impression.</p>
         </div>
         <div class="content-box">
-            <img src="img/istockphoto-1371339413-612x612.jpg" alt="">
+            <img src="img/istockphoto-1371339413-612x612.jpg" alt="img">
             <h3>Premium Features</h3>
             <p>Experience cutting-edge features that elevate your web presence to the next level.</p>
         </div>
         <div class="content-box">
-            <img src="img/web-development-coding-programming-internet-technology-business-concept-web-development-coding-programming-internet-technology-122084136.webp" alt="">
+            <img src="img/web-development-coding-programming-internet-technology-business-concept-web-development-coding-programming-internet-technology-122084136.webp" alt="img">
             <h3>Custom Solutions</h3>
             <p>Tailor-made solutions that perfectly match your brand and business objectives.</p>
         </div>
-        <div class="content-box">
-            <img src="img/homeexam.jpg" alt="">
+        </div>
+        </section>
+
+      
+        <div class="pro"><h1>My real life Projects</h1><br>
+            <ul>
+                <li><strong>Smart Task Manager</strong> - A productivity tool designed to help users efficiently organize and track their daily tasks with smart reminders and notifications.</li><br>
+                <li><strong>Online Learning Platform</strong> - A web-based platform to provide interactive courses with quizzes and video lectures to enhance learning experiences.</li><br>
+                <li><strong>Real-time Weather App</strong> - An application that provides accurate weather forecasts using live data feeds, helping users stay prepared for any weather condition.</li><br>
+                <li><strong>E-Commerce Solution</strong> - A complete online store system that integrates product management, payment gateway, and customer support features.</li><br>
+                <li><strong>Inventory Management System</strong> - A tool for businesses to streamline their inventory, track stock levels, and manage orders seamlessly.</li><br>
+                <li><strong>Healthcare Appointment Booking</strong> - A system that allows patients to book appointments with healthcare professionals easily, reducing wait times and improving scheduling efficiency.</li><br>
+                <li><strong>Personal Finance Tracker</strong> - An app designed to help individuals manage their finances by tracking expenses, setting budgets, and analyzing spending patterns.</li><br>
+                <li><strong>Social Media Dashboard</strong> - A tool for businesses to manage multiple social media accounts, track engagement, and analyze metrics from one platform.</li><br>
+            </ul>
+            
+        
+        </div>
+        <section class="content">
+        <div class="content-box" onclick="PaperLibrary(PaperLibrary)">
+            <img src="img/homeexam.jpg" alt="img">
             <h3>PaperLibrary - Access Exam Papers Anytime</h3>
             <p>  PaperLibrary offers a comprehensive collection of previous years' exam papers for various subjects. </p>
         </div>
    
-        <div class="content-box">
-            <img src="img/img to  pdf 1.jpg" alt="">
+        <div class="content-box" onclick="imgspdf(imgspdf)">
+            <img src="img/img to  pdf 1.jpg" alt="img">
             <h3>Images 5G pdf</h3>
             <p>Images 5G PDF offers a fast and efficient way to convert multiple images into a single PDF document. Easily organize and merge your images into a professional PDF format with just a few clicks.</p>
+        </div>
+        <div class="content-box" onclick="CodingBlueprint('Roode_Map.html')">
+            <img src="img/rood_map.jpg" alt="img">
+            <h3>The Coding Blueprint</h3>
+            <p>I have created a comprehensive roadmap for all coding-related subjects that will simplify and enhance your learning journey.</p>
         </div>
     </section>
 
@@ -1106,6 +1144,7 @@
                 <div class="badge-progress">
                     <div class="progress-bar" style="width: 90%;"></div>
                 </div>
+     
       </div>
   
     </div>
@@ -1274,6 +1313,7 @@ const stars = document.querySelectorAll('.stars input');
             { message: "New feature: Bill Generator with Format Selection", url: "biling.html" },
             { message: "New feature: PaperLibrary", url: "http://paperlibrary.netlify.app" },
             { message: "New feature: img to pdf ", url: "https://code-with-n-a.github.io/img-to-pdf/" },
+            { message: "New feature: The Coding Blueprint ", url: "Roode_Map.html" },
             
         ];
 
@@ -1305,6 +1345,23 @@ const stars = document.querySelectorAll('.stars input');
 
         // Call the function when the page loads
         window.onload = showUpdates;
+
+
+    
+        // The Coding Blueprint
+        function PaperLibrary(PaperLibrary) {
+    window.location.href = "paper.html";
+}
+        // The Coding Blueprint
+        function imgspdf(Imagespdf) {
+    window.location.href = "img_to_pdf_5G.html";
+}
+
+    // The Coding Blueprint
+    function CodingBlueprint(Roode_Maphtml) {
+    window.location.href = "Roode_Map.html";
+}
+
     </script>
 
 </body>
