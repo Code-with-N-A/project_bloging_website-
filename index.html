@@ -385,7 +385,7 @@
         .toggle-btn div {
             width: 70%;
             height: 3px;
-            background-color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
             margin: 6px 0;
             transition: all 0.3s ease;
         }
@@ -474,11 +474,12 @@
                 width: auto;
                 height: auto;
                 display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
                 align-items: center;
+                flex-direction: row;
                 padding: 0;
                 background-color: transparent;
+                text-align: right;
+                margin-left: 70%;
             }
 
             .toggle-btn {
@@ -488,6 +489,35 @@
             .toggle-menu a {
                 margin: 0 20px;
                 font-size: 1rem;
+            }
+        }
+       
+        @media (min-width: 124px) {
+            /* Display the menu horizontally for larger screens */
+            .toggle-menu {
+                margin-left: 65%;
+
+            }
+        }
+        @media (min-width: 912px) {
+            /* Display the menu horizontally for larger screens */
+            .toggle-menu {
+                margin-left: 60%;
+
+            }
+        }
+        @media (min-width: 853px) {
+            /* Display the menu horizontally for larger screens */
+            .toggle-menu {
+                margin-left: 55%;
+
+            }
+        }
+        @media (min-width: 600px) {
+            /* Display the menu horizontally for larger screens */
+            .toggle-menu {
+                margin-left: 58%;
+
             }
         }
 
@@ -513,18 +543,118 @@
           
         }
        .b button {
-       padding: 6px;
-       border-radius: 30px;
-       font-size: 2.5vh;
+        margin-top: 45%;
+        color: rgb(255, 255, 255);
+       padding: 10px;
+       margin-left: 550px;
+       border-radius: 20px;
        border: 8px soli black;
-       background: linear-gradient(rgb(198, 232, 202),rgb(183, 228, 183));
-
-
-
-           
+       background-color: rgb(0, 0, 0);
+       font-size: larger;
+      border: 2px solid lavender;
         }
+        @media (max-width: 1200px) {
+    .b button {
+        margin-top: 45%;
+        color: rgb(255, 255, 255);
+       margin-left: 170px;
+       border-radius: 20px;
+       border: 8px soli black;
+       background-color: rgb(0, 0, 0);
+       font-size: small;
+      border: 2px solid lavender;
+    }
+}
+        @media (max-width: 1024px) {
+    .b button {
+        margin-top: 45%;
+        color: rgb(255, 255, 255);
+       margin-left: 390px;
+       border-radius: 20px;
+       border: 8px soli black;
+       background-color: rgb(0, 0, 0);
+       font-size: small;
+      border: 2px solid lavender;
+    }
+}
+        @media (max-width: 768px) {
+    .b button {
+        margin-top: 45%;
+        color: rgb(255, 255, 255);
+       margin-left: 320px;
+       border-radius: 20px;
+       border: 8px soli black;
+       background-color: rgb(0, 0, 0);
+       font-size: small;
+      border: 2px solid lavender;
+    }
+}
+    
+        @media (max-width: 820px) {
+    .b button {
+        margin-top: 50%;
+        color: rgb(255, 255, 255);
+        margin-left: 330px;
+       border-radius: 20px;
+       border: 8px soli black;
+       background-color: rgb(0, 0, 0);
+       font-size: small;
+      border: 2px solid lavender;
+    }
+}
+    
+        @media (max-width: 540px) {
+    .b button {
+        margin-top: 40%;
+        color: rgb(255, 255, 255);
+        margin-left: 170px;
+       border-radius: 20px;
+       border: 8px soli black;
+       background-color: rgb(0, 14, 29);
+       font-size: small;
+      border: 2px solid lavender;
+    }
+}
+        @media (max-width: 1100px) and (max-width: 1280px) {
+    .b button {
+        margin-top: 50%;
+        color: rgb(255, 255, 255);
+       border-radius: 20px;
+       border: 8px soli black;
+       background-color: rgb(0, 14, 29);
+       font-size: small;
+      border: 2px solid lavender;
+    }
+}
+        @media (max-width: 412px) {
+    .b button {
+        margin-top: 40%;
+        color: rgb(255, 255, 255);
+        margin-left: 170px;
+       border-radius: 20px;
+       border: 8px soli black;
+       background-color: rgb(0, 14, 29);
+       font-size: small;
+      border: 2px solid lavender;
+    }
+}
+        @media (max-width: 360px) {
+    .b button {
+        margin-top: 40%;
+        color: rgb(255, 255, 255);
+        margin-left: 150px;
+       border-radius: 20px;
+       background-color: rgb(0, 14, 29);
+       font-size: 5.9px;
+      border: 2px solid lavender;
+    }
+}
+    
+
         button:hover{
-            background: linear-gradient(rgb(122, 190, 210),rgb(117, 203, 203));
+            color: black;
+            background-color: #ffffff;
+           border: 2px solid black;
         }
         img{
             width: 100%;
@@ -938,18 +1068,51 @@
             text-align: left;
         }
 
-        /*sliding img s*/
-        .slider-container {
-            width: 100%;
-            height: 60vh; /* Set height relative to viewport height for responsiveness */
-            overflow: hidden;
-            position: relative;
-            background-color: #000; /* Set background color to black */
-        }
+        /*sliding img start*/
+       /* Default styling for slider container */
+.slider-container {
+    width: 100%;
+    height: 70vh; /* Set height relative to viewport height */
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(rgb(162, 221, 233), rgb(240, 224, 208));
+    display: flex; /* Centering content inside container */
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+    object-fit: cover;
+}
+
+/* Image styling */
+.slide img {
+    max-width: 60%;  /* Ensures the image width stays within the container */
+    max-height: 18%; /* Ensures the image height stays within the container */
+    object-fit: contain; /* Ensure the image fits inside the container without distortion */
+    height: auto; /* Responsive height */
+    width: auto; /* Responsive width */
+    display: block; /* Image behaves like a block element */
+    padding-top: 0; /* Remove padding if not needed */
+}
+
+/* Media query for iPad screen sizes */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .slider-container {
+        height: 70vh; /* Slightly taller for iPad screens */
+    }
+
+    .slide img {
+        max-width: 100%; /* Ensure image takes full width of the container */
+        max-height: 100%; /* Ensure image height adjusts properly */
+        object-fit: contain; /* Maintain aspect ratio without cropping */
+    }
+}
+
+       
+          
 
         .slider {
             display: flex;
             transition: transform 1s ease-in-out;
+           
         }
 
         .slide {
@@ -962,16 +1125,11 @@
             position: relative;
         }
 
-        .slide img {
-            width: 50%;  /* Adjust image size */
-            height: 100%; /* Set image height to 100% */
-            object-fit: cover; /* Ensure the image covers the container without distortion */
-            padding-top: 20px;
-        }
+        
 
         .slide-text {
             width: 50%; /* Text takes up 50% width */
-            color: #fff;  /* Set text color to white */
+            color: #000000;  /* Set text color to white */
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -1004,53 +1162,198 @@
             width: 15px;
             height: 15px;
             margin: 0 5px;
-            background-color: lavender;
+            background-color: rgb(0, 0, 0);
             border-radius: 50%;
             cursor: pointer;
             transition: background-color 0.3s;
         }
 
         .ctive {
-            background-color: rgb(242, 97, 6);
+            background-color: rgb(0, 221, 255);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .slider-container {
-                height: 40vh; /* Adjust height for smaller screens */
+                height: 24vh; /* Adjust height for smaller screens */
+                object-fit: cover;
                 
             }
 
             .slide-text h2 {
                 font-size: 24px; /* Adjust heading size for smaller screens */
+                object-fit: cover;
+            }
+
+            .slide-text p {
+                font-size: 20px; /* Adjust paragraph size for smaller screens */
+                object-fit: cover;
+            }
+            .slide img {
+                width: 60%;
+                height: 34vh; /* Adjust image size for small screens */
+                max-height: 20vh;
+                max-width: 350px;
+                object-fit: cover;
+            }
+
+        }
+        @media (max-width: 820px) {
+            .slider-container {
+                height: 24vh; /* Adjust height for smaller screens */
+                object-fit: cover;
+                
+            }
+
+            .slide-text h2 {
+                font-size: 24px; /* Adjust heading size for smaller screens */
+                object-fit: cover;
+            }
+
+            .slide-text p {
+                font-size: 20px; /* Adjust paragraph size for smaller screens */
+                object-fit: cover;
+            }
+            .slide img {
+                width: 60%;
+                height: 20vh; /* Adjust image size for small screens */
+                max-height: 30vh;
+                max-width: 350px;
+                object-fit: cover;
+            }
+
+        }
+       
+        @media (max-width: 1024px) {
+            .slider-container {
+                height: 23vh; /* Adjust height for smaller screens */
+                object-fit: cover;
+                
+            }
+
+            .slide-text h2 {
+                font-size: 15px; /* Adjust heading size for smaller screens */
+                object-fit: cover;
             }
 
             .slide-text p {
                 font-size: 16px; /* Adjust paragraph size for smaller screens */
+                object-fit: cover;
             }
+            .slide img {
+                width: 55%;
+                height: 24vh; /* Adjust image size for small screens */
+                max-height: 30vh;
+                max-width: 600px;
+                object-fit: cover;
+            }
+
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 480px) and (max-width: 912px) {
             .slider-container {
-                height: 23vh; /* Further adjust for very small screens */
+               
+                height: 15vh; /* Further adjust for very small screens */
+               
             }
-
+           
             .dot {
                 width: 12px;
                 height: 12px;
                 margin: 0 4px;
+                object-fit: cover;
+              
             }
 
             .slide-text h2 {
-                font-size: 18px; /* Adjust heading size further for small screens */
+                font-size: 10px; /* Adjust heading size further for small screens */
+                object-fit: cover;
             }
 
             .slide-text p {
-                font-size: 14px; /* Adjust paragraph size further for small screens */
+                font-size: 9px;
+                object-fit: cover; /* Adjust paragraph size further for small screens */
             }
 
             .slide img {
-                width: 60%; /* Adjust image size for small screens */
+                width: 60%;
+                height: 15vh; /* Adjust image size for small screens */
+                max-height: 220px;
+                object-fit: cover;
+            }
+        }
+       
+        @media (max-width: 412px) and (max-width: 915px) {
+            .slider-container {
+               
+                height: 21vh;
+                
+                 /* Further adjust for very small screens */
+               
+            }
+           
+            .dot {
+                width: 12px;
+                height: 12px;
+                margin: 0 4px;
+                object-fit: cover;
+            }
+
+            .slide-text h2 {
+                font-size: 15px; /* Adjust heading size further for small screens */
+                object-fit: cover;
+            }
+
+            .slide-text p {
+                font-size: 11px;
+                object-fit: cover; /* Adjust paragraph size further for small screens */
+            }
+
+            .slide img {
+                
+                width: 100%;
+                height: 25vh; /* Adjust image size for small screens */
+                max-width: 400px;
+                max-height: 160px;
+                object-fit: cover;
+               
+            }
+        }
+        @media (max-width: 390px) and (max-width: 844px) {
+            .slider-container {
+               
+                height: 19vh;
+                
+                 /* Further adjust for very small screens */
+               
+            }
+           
+            .dot {
+                width: 12px;
+                height: 12px;
+                margin: 0 4px;
+                object-fit: cover;
+               
+            }
+
+            .slide-text h2 {
+                font-size: 10px; /* Adjust heading size further for small screens */
+                object-fit: cover;
+            }
+
+            .slide-text p {
+                font-size: 8px;
+                object-fit: cover; /* Adjust paragraph size further for small screens */
+            }
+
+            .slide img {
+                
+                width: 100%;
+                height: 18vh; /* Adjust image size for small screens */
+                max-width: 300px;
+                max-height: 200px;
+                object-fit: cover;
+               
             }
         }
 
@@ -1082,30 +1385,27 @@
           <div class="suggestions" id="suggestions"></div>
         </div>
       </div>
-      <!--img sliding code  S-->
+      <!--img sliding code  Start-->
       <div class="slider-container">
         <div class="slider">
             <div class="slide">
                 <div class="slide-text">
-                    <h2>Coding Tree</h2>
+                    <h2>Master Coding Skills</h2>
                     
-                    <p>Coding powers innovation, turning ideas into reality. 💻 Each line of code solves problems and creates endless possibilities. Keep learning, keep coding! 🚀</p>
-                </div>
-                <img src="slide_img/code.jpeg" alt="Image 1">
+                    <p>Coding is the foundation of modern technology, enabling developers to create everything from websites to software applications. With the right coding skills, you can turn your ideas into reality and solve real-world problems efficiently.</p>                </div>
+                <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*2lmaQ6YidowvE6rM6akoMw.png" alt="Image 1">
             </div>
             <div class="slide">
                 <div class="slide-text">
-                    <h2>Python power</h2>
-                    <p>Python is a simple, powerful language used for web development, data science, and more. 🐍 It's easy to learn and perfect for beginners and experts alike! 🚀</p>
-                </div>
-                <img src="slide_img/python.webp" alt="Image 2">
+                    <h2>Learn Programming Languages</h2>
+                    <p>From Python to JavaScript, learning different programming languages opens up new opportunities in the tech industry. Each language has its unique strengths and applications, helping you build everything from mobile apps to complex algorithms.</p>                </div>
+                <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/08/learn-coding-online-for-free.webp" alt="Image 2">
             </div>
             <div class="slide">
                 <div class="slide-text">
-                    <h2>Full stack web</h2>
-                    <p>Full Stack development covers both front-end and back-end, enabling the creation of complete web apps. 💻🚀</p>
-                </div>
-                <img src="slide_img/full.webp" alt="Image 3">
+                    <h2>Build Innovative Projects</h2>
+                    <p>Coding allows you to build innovative and impactful projects that can shape the future of technology. Whether it's developing websites, automating tasks, or creating AI applications, coding empowers you to bring your creative vision to life.</p>                </div>
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20220325175226/WebDevelopmentProjects2.png" alt="Image 3">
             </div>
         </div>
         <div class="dots">
@@ -1141,12 +1441,11 @@
             <img src="img/logo2.png" alt="logo">
 
            </div>
-        <img class="background-image" src="img/Grey and Black Simple Digital Marketing Tools Blog Banner(1).png" alt="img">
+        <img class="background-image" src="img/prime1+1.png" alt="img">
         <div class="overlay-text">
            
 
-            <h1>Welcome </a></h1>
-            <p>bloging Website</p>
+          
             <div class="b">
                 <button onclick="explor()">Explore More</button>
             </div>
@@ -1226,6 +1525,7 @@
             <h3>Custom Solutions</h3>
             <p>Tailor-made solutions that perfectly match your brand and business objectives.</p>
         </div>
+        
         </div>
         </section>
 
@@ -1261,6 +1561,11 @@
             <h3>The Coding Blueprint</h3>
             <p>I have created a comprehensive roadmap for all coding-related subjects that will simplify and enhance your learning journey.</p>
         </div>
+        <div class="content-box" onclick="blogs('blog.html')">
+            <img src="img/blog.jpg" alt="img">
+            <h3>Latest Tech Insights</h3>
+            <p>Discover the most up-to-date and informative blogs on technology, coding, and industry trends. Our content is designed to keep you ahead in the world of innovation and development. Stay informed, stay inspired.</p>
+            </div>
     </section>
 
     
@@ -1480,7 +1785,7 @@ const stars = document.querySelectorAll('.stars input');
 
          // Updates array containing messages and their corresponding URLs
          const updates = [
-            { message: "New feature: Bill Generator with Format Selection", url: "biling.html" },
+            { message: "New feature: Latest Blogs", url: "blog.html" },
             { message: "New feature: PaperLibrary", url: "http://paperlibrary.netlify.app" },
             { message: "New feature: img to pdf ", url: "https://code-with-n-a.github.io/img-to-pdf/" },
             { message: "New feature: The Coding Blueprint ", url: "Roode_Map.html" },
@@ -1530,6 +1835,10 @@ const stars = document.querySelectorAll('.stars input');
     // The Coding Blueprint
     function CodingBlueprint(Roode_Maphtml) {
     window.location.href = "Roode_Map.html";
+}
+    //  blogs
+    function blogs(blog) {
+    window.location.href = "blog.html";
 }
 
 
