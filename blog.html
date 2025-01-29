@@ -287,36 +287,7 @@
             display: inline-block;
         }
 
-        .rating {
-            margin-top: 15px;
-        }
-
-        .rating label {
-            font-size: 2em;
-            color: #ccc;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .rating input {
-            display: none;
-        }
-
-        .rating input:checked ~ label,
-        .rating input:checked ~ label ~ label {
-            color: #f39c12;
-        }
-
-        .rating label:hover,
-        .rating label:hover ~ label {
-            color: #f39c12;
-        }
-
-        .rating-container {
-            margin-top: 10px;
-            color: #fff;
-        }
-
+        
         .author {
             display: flex;
             align-items: center;
@@ -938,6 +909,85 @@
         }
 
         /*sliding img and*/
+
+       /* reting staer start */
+       .rating-container {
+      text-align: center;
+      margin: 20px;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      background-color: #222;
+      color: gold;
+    }
+
+    h2 {
+      font-size: 24px;
+      background: linear-gradient(135deg, #ff0080, #ff8c00);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 15px;
+      position: relative;
+      justify-content: center;
+    }
+
+    .star {
+      font-size: 40px;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      color: #666;
+    }
+
+    .star:hover {
+      transform: scale(1.3) rotate(10deg);
+      color: #ffd700;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+
+    .glow-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 50%);
+      border-radius: 50%;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .star:hover .glow-effect {
+      opacity: 1;
+      transform: scale(1.6);
+    }
+
+    .star.active {
+        color: #ffd700;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.9), 0 0 20px rgba(255, 215, 0, 0.6);
+      transform: scale(1.1);
+    }
+
+    #rating-value {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #ffd700;
+      letter-spacing: 1.5px;
+    }
+
+    #message {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #fff;
+    }
+       /* reting staer start */
     </style>
 </head>
 <body>
@@ -979,16 +1029,14 @@
                     <input type="text" id="search" placeholder="Search courses...">
                     <button onclick="searchCourses()">🔍</button>
                 </div>
-            
             <div class="results" id="results"></div>
-           
-        </div>
-
-        <div class="blog-posts" id="AI Cloud 1">
+        </div>    
+      
+        <div class="blog-posts">
             <div class="blog-post">
-                <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*aF62xZVDIsOwwi72detk6A.png" alt="Blog Image 1">
+                <img src="https://blog.colobridge.net/wp-content/uploads/2024/02/Cloud-Computing-and-ai-min-1536x1024.jpg" alt="Blog Image 1">
                 <div class="content">
-                    <div class="text-above">
+                    <div class="text-above" id="AI Cloud1">
                         <p>AI Cloud: The Future of AI and Its Impact.</p>
                     </div>
                     <h2>What is AI Cloud?</h2>
@@ -1019,11 +1067,13 @@
                     <p><h3>Example:</h3>AI-powered chatbots in customer service will handle common queries automatically, escalating complex issues to human agents when necessary.</p>
                     <h2>8. Data Privacy and Ethics:</h2>
                     <p>As AI Cloud adoption grows, data privacy and ethics will become crucial issues. AI Cloud providers will need to ensure that customer data is secure and used ethically. In the future, AI Cloud platforms will adopt stricter privacy regulations and ethical AI practices to protect user information.</p>
+                    <img src="https://scalegrid.io/wp-content/uploads/blog-feature-img_ai-in-cloud-computing-scalegrid.jpg" alt="Blog Image 1">
+
                     <p><h3>Example:</h3>AI Cloud platforms will encrypt sensitive customer data and ensure that it is only used with the user’s consent, preventing data breaches and misuse.</p>
                     <h2>Conclusion:</h2>
                     <p>AI Cloud is the future of AI technology. It will not only open new opportunities for businesses but will also improve our daily lives by making processes more efficient and scalable. Small businesses, healthcare providers, and even smart cities will benefit from AI Cloud by optimizing their systems and implementing innovative solutions.</p>
                     <div class="author">
-                        <img src="img/nitesh.jpg"alt="Author">
+                        <img src="img/IMG_20241103_142348_375.jpg"alt="Author">
                         <div>
                             <p class="author-name">Nitesh Amule</p>
                             <p class="author-bio">"I have created all of this based on my own thoughts and ideas about AI. My name is Nitesh, and I've shared my perspective on the future of AI Cloud.".</p>
@@ -1036,21 +1086,162 @@
                            
 
                             <div class="rating">
-                                <input type="radio" name="rating5" id="star5-1" onclick="rate(5)"><label for="star5-1">★</label>
-                                <input type="radio" name="rating4" id="star4-1" onclick="rate(4)"><label for="star4-1">★</label>
-                                <input type="radio" name="rating3" id="star3-1" onclick="rate(3)"><label for="star3-1">★</label>
-                                <input type="radio" name="rating2" id="star2-1" onclick="rate(2)"><label for="star2-1">★</label>
-                                <input type="radio" name="rating1" id="star1-1" onclick="rate(1)"><label for="star1-1">★</label>
+                                <div class="rating-container" id="rating1">
+                                    <h2>Blog Post 1 Rating</h2>
+                                    <div class="stars">
+                                      <span class="star" data-value="1">★<div class="glow-effect"></div></span>
+                                      <span class="star" data-value="2">★<div class="glow-effect"></div></span>
+                                      <span class="star" data-value="3">★<div class="glow-effect"></div></span>
+                                      <span class="star" data-value="4">★<div class="glow-effect"></div></span>
+                                      <span class="star" data-value="5">★<div class="glow-effect"></div></span>
+                                    </div>
                             </div>
 
                             <div class="rating-container">
-                                <span>Your rating: <span id="rating-value">0</span> stars</span>
+                                <div id="rating-value1">Select your rating</div>
+                                <div id="message1"></div>
+                                </div>
                             </div>
                            
                             <input type="text" name="name" placeholder="Your Name" required>
                             <textarea type="text" name="text" placeholder="comment-section" required></textarea>
                              <!-- Feedback Section -->
                             <input type="hidden" name="_next" value="https://primeprojects.netlify.app/">
+                            <input type="hidden" name="_subject" value="New Contact Form Submission">
+                       
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+        <!--2 start AI Robotics-->
+            <div class="blog-post">
+                <img src="https://www.securities.io/wp-content/uploads/2024/03/DALL%C2%B7E-2024-03-21-09.08.33-A-highly-detailed-and-realistic-image-showing-an-advanced-robot-seated-at-a-modern-sleek-desk-surrounded-by-multiple-screens-displaying-complex-algor.webp" alt="Blog Image 1">
+                <div class="content">
+                    <div class="text-above"  id="AI Robotics2">
+                        <p>AI Robotics: The Future of Automation and Intelligent Machines. AI robotics combines artificial intelligence with robotics to create machines capable of performing complex tasks, making decisions, and learning from their environment. These robots are used in various industries, such as manufacturing, healthcare, and space exploration, to improve efficiency and perform tasks that are too dangerous or difficult for humans. With advancements in machine learning, computer vision, and natural language processing, AI robotics is transforming how we interact with machines and shaping the future of automation.</p>
+                    </div>
+                    <h2>What is AI Robotics ?</h2>
+                    <p>AI Robotics is growing at an unprecedented rate, revolutionizing the way machines interact with humans and perform tasks. In today's world, AI robotics is being integrated with cloud computing, enabling robots to become more intelligent, adaptable, and capable of executing complex tasks in various industries. AI Robotics involves combining artificial intelligence with robotics to create machines that can perceive their environment, make decisions, and learn over time. With advancements in machine learning, computer vision, and natural language processing, AI robotics is transforming automation, enhancing manufacturing, healthcare, and even space exploration.</p>
+                    <p>AI Robotics refers to the integration of AI technologies with robotic systems to create intelligent machines capable of performing tasks autonomously. This combination allows robots to perceive their environment, make decisions, and learn from experience, making them more efficient and adaptable. With the advancement of AI, organizations no longer need to develop complex robotic systems from scratch. Instead, they can leverage existing AI models and robotic platforms from cloud providers like Amazon Web Services (AWS), Microsoft Azure, and Google Cloud, which offer scalable and flexible solutions for integrating AI into robotics applications. This makes AI robotics more accessible and powerful for various industries, including manufacturing, healthcare, and logistics.</p>
+                    <h2>The Future of AI Robotics</h2>
+                    <p>The future of AI Robotics looks incredibly promising. In the coming years, AI robotics technologies will revolutionize various industries, transforming the way we approach manufacturing, healthcare, and other sectors. With advancements in machine learning, computer vision, and natural language processing, robots will become more autonomous, intelligent, and capable of working alongside humans in dynamic environments. Let's take a look at how AI Robotics will shape the future:</p>
+                    <h2>1. Democratizing Robotick AI:</h2>
+                    <p>Traditionally, robotics and AI were only accessible to large organizations with the resources to build and maintain complex robotic systems. However, AI Robotics is now becoming more accessible, thanks to cloud-based platforms and advancements in AI technologies. These platforms provide easy-to-use tools, making it possible for even small and medium-sized businesses to integrate AI robotics into their operations. With the power of AI, businesses can enhance automation, improve efficiency, and create intelligent robots that can adapt to a variety of tasks, from manufacturing to healthcare.</p>
+                    <p><h4>Example:</h4>A small manufacturing company can use AI Robotics to automate routine tasks like assembly line operations without having to invest in expensive robotic infrastructure. By leveraging cloud-based AI robotics platforms, they can deploy intelligent robots that learn from their environment and adapt to different production requirements, improving efficiency and reducing human error.</p>
+                    <h2>2. Real-Time Data Processing and Autonomous Predictions in AI Robotics:</h2>
+                    <p>With AI Robotics, robots will be able to process data in real-time, enabling them to make autonomous decisions and predictions. This capability will allow robots to adapt to changing environments, optimize their actions, and perform tasks more efficiently. For example, in manufacturing, AI robots can predict maintenance needs, optimize production schedules, and enhance safety measures based on real-time data analysis.</p>
+                    <p><h3>Example:</h3>E-commerce platforms can use AI Robotics to automate warehouse operations, ensuring faster processing and accurate order fulfillment by using intelligent robots that adapt to real-time inventory data.</p>
+
+                    <h2>3. Scalability and Flexibility in AI Robotics:</h2>
+                    <p>One of the major advantages of AI Robotics is its scalability. Businesses can scale their robotic systems as needed, without having to worry about maintaining or upgrading their infrastructure. This flexibility allows businesses to adapt to changing needs and growth, such as increasing production capacity or automating new tasks in response to market demands.</p>
+                    <p><h3>Example:</h3>During high-demand periods, such as product launches, companies can deploy additional AI robots to meet the increased demand for production or customer service, adjusting their robotic workforce accordingly.</p>
+                    
+                    <h2>4. Advanced AI Models and Automation in Robotics:</h2>
+                    <p>In the future, AI Robotics will integrate even more sophisticated AI models capable of handling complex tasks and improving over time. These models will have self-learning and self-improvement capabilities, enabling robots to perform tasks more efficiently and autonomously, while learning from past experiences.</p>
+                    <p><h3>Example:</h3>Autonomous delivery robots will continuously improve their navigation and obstacle avoidance algorithms based on real-time data from sensors, ensuring safe and efficient deliveries in dynamic environments.</p>
+                    
+                    <h2>5. AI Robotics in Edge Computing:</h2>
+                    <p>Edge computing involves processing data closer to the source, reducing latency and improving speed. AI Robotics will integrate with edge devices to enable real-time decision-making at the point of action, enhancing robot performance and reducing delays in task execution.</p>
+                    <p><h3>Example:</h3>In smart factories, AI Robotics will work with edge devices to process data in real-time, enabling robots to adjust their actions based on sensor input, such as detecting product defects or reacting to changes in the production line.</p>
+                    
+                    <h2>6. AI Robotics in Healthcare:</h2>
+                    <p>AI Robotics will revolutionize healthcare by making it easier to deploy autonomous surgical robots, diagnostic tools, and treatment plans. Cloud-based AI platforms will help healthcare professionals by analyzing medical records and predicting health conditions with greater accuracy, while robots assist in surgeries and patient care.</p>
+                    <p><h3>Example:</h3>AI-powered surgical robots will assist doctors in performing complex surgeries with higher precision, analyzing real-time data to ensure optimal outcomes for patients.</p>
+                    
+                    <h2>7. Improved Customer Experience with AI Robotics:</h2>
+                    <p>AI Robotics will transform customer service by powering intelligent robots that can assist customers in real-time, provide personalized assistance, and handle tasks autonomously. These robotic solutions will enhance the overall customer experience by offering faster and more efficient service.</p>
+                    <p><h3>Example:</h3>AI-powered robots in retail stores will assist customers by providing product recommendations, answering queries, and guiding them through the shopping process, improving the in-store experience.</p>
+                    
+                    <h2>8. Data Privacy and Ethics in AI Robotics:</h2>
+                    <p>As AI Robotics adoption grows, data privacy and ethics will become crucial issues. Robotics companies will need to ensure that the data collected by robots is secure, and that ethical standards are followed during the deployment and use of robots. Stricter privacy regulations and ethical AI practices will be adopted to protect user information and ensure responsible robot behavior.</p>
+                   <img src="https://i0.wp.com/aihealthcarestudy.com/wp-content/uploads/2024/10/AI-robotics-healthcare.jpg?w=1344&ssl=1" alt="Rpbotics">
+                    <p><h3>Example:</h3>AI robots used in healthcare will encrypt patient data and ensure that it is only used with the patient’s consent, preventing data breaches and misuse.</p>
+                    
+                    <h2>Conclusion:</h2>
+                    
+                    <p>AI Robotics is the future of automation and intelligent systems. It will not only create new opportunities for industries but also improve daily life by making tasks more efficient, accurate, and autonomous. Small businesses, healthcare providers, and even smart cities will benefit from AI Robotics by automating complex processes, improving productivity, and implementing innovative robotic solutions that adapt to real-time data and enhance decision-making.</p>
+                   
+                    <h2>1. Self-awareness in AI Robotics:</h2>
+                    <p>AI robots' "self-awareness" was previously an abstract concept, but recent advancements have made it possible for robots to be programmed to think about their environment and actions. This self-awareness allows them to make better and more adaptable decisions, similar to human-like thinking.</p>
+
+                    <h2>Secret Insight:</h2>
+                    <p>Today's robots analyze their performance and errors and optimize their algorithms, giving them the ability to "self-learn" and "self-improve." This is a phase where robots start to understand the consequences of their actions.</p>
+
+                    <h2>2. Robots and Emotional Intelligence:</h2>
+                    <p>Developing emotional intelligence in AI robots has been a challenging task, but now they are being trained to recognize and respond to human emotions. These AI robots can be especially useful in fields like customer service, healthcare, and caregiving professions, as they can provide better responses by understanding human emotions.</p>
+
+                    <h2>Secret Insight:</h2>
+                    <p>In the future, robots will develop emotional intelligence to a higher level, where they will not only analyze facial expressions or speech but also understand human emotions contextually and make empathetic decisions.</p>
+
+                    <h2>3. Neural Interfaces with Human Brain:</h2>
+                    <p>Another fascinating development in AI robotics is the potential integration of "brain-computer interfaces." In this, robots and humans can communicate directly, with AI robots reading human brain signals and taking actions based on human thoughts.</p>
+
+                    <h2>Secret Insight:</h2>
+                    <p>With brain-computer interface technology, humans and robots will be able to understand each other’s thoughts and make real-time decisions together. This technology is still in its experimental stage, but in the future, it may enable next-level human-robot collaboration.</p>
+
+                    <h2>4. Quantum Computing in AI Robotics:</h2>
+                    <p>Integrating quantum computing with AI robotics could be a game-changer. Quantum computers can process exponentially more data and solve complex problems that are difficult for classical computers.</p>
+
+                    <h2>Secret Insight:</h2>
+                    <p>Quantum AI robots can perform tasks that traditional computers can't even think of. For example, quantum computers will run advanced simulations and predictions in real-time, and AI robots could autonomously handle tasks like analyzing the microscopic behavior of the human body or predicting environmental changes.</p>
+
+                    <h2>5. Ethical AI Robotics:</h2>
+                    <p>The biggest challenge in AI robotics is its ethical implications. Even today, AI robots are not properly "ethically trained," making it difficult to predict their behavior. While robots can efficiently perform tasks, how they will evolve in terms of human safety and ethics is still a mystery.</p>
+
+                    <h2>Secret Insight:</h2>
+                    <p>In the future, AI robots will be trained under a self-ethical model that will allow them to consider human welfare and ethical standards before making decisions. This technology is challenging, but eventually, robots will take actions with an understanding of the ethical consequences of their decisions.</p>
+
+                    <h2>6. AI Robotics in Military & Defense:</h2>
+                    <p>AI robotics in the military is a controversial and sensitive topic, but AI robots are already advanced enough to be used in military applications. Autonomous military robots that can make real-time decisions on war zones could be a game-changer.</p>
+
+                    <h2>Secret Insight:</h2>
+                    <p>AI robots operating in the battlefield will be designed to make high-level decisions and autonomous targeting systems. In the future, these robots may change military strategies and defense mechanisms, where human intervention will be minimal, and robots will handle complex situations autonomously.</p>
+
+                    <h2>7. AI-Driven Creativity in Robotics:</h2>
+                    <p>We currently see robots performing repetitive tasks, but AI robotics is now evolving into the creative field as well. AI robots are being trained to create art, music, and literature.</p>
+
+                    <h2>Secret Insight:</h2>
+                    <p>In the future, robots will be able to create new forms of art and creative works, which could serve as inspiration for human artists. If this technology develops in the right direction, AI robots could become "creative partners."</p>
+
+                    <div class="author">
+                        <img src="https://cdn.pixabay.com/photo/2023/08/29/02/51/ai-generated-8220376_640.jpg"alt="Author">
+
+                        <div>
+                            <p class="author-name">Elon Musk</p>
+                            <p class="author-bio">Elon Musk, the CEO of SpaceX and Tesla, has been a vocal advocate for the responsible development of artificial intelligence (AI). He has often warned about the potential dangers of uncontrolled AI, emphasizing the importance of regulation. Musk believes that AI could surpass human intelligence and pose existential risks if it is not developed with proper oversight and safety measures.</p>
+                           
+                        </div>
+                    </div>
+
+                    <div class="comment-section">
+                        <h3>Leave a Comment</h3>
+                        <form action="https://formsubmit.co/codewithna73@gmail.com" method="POST">
+                           
+
+                            <div class="rating">
+                                <div class="rating-container" id="rating2">
+                                    <h2>Blog Post Rating</h2>
+                                    <div class="stars">
+                                      <span class="star" data-value="1">★<div class="glow-effect"></div></span>
+                                      <span class="star" data-value="2">★<div class="glow-effect"></div></span>
+                                      <span class="star" data-value="3">★<div class="glow-effect"></div></span>
+                                      <span class="star" data-value="4">★<div class="glow-effect"></div></span>
+                                      <span class="star" data-value="5">★<div class="glow-effect"></div></span>
+                                    </div>
+                            </div>
+
+                            <div class="rating-container">
+                                <div id="rating-value2">Select your rating</div><br>
+                                <div id="message2"></div>
+                                </div>
+                            </div>
+                           
+                            <input type="text" name="name" placeholder="Your Name" required >
+                            <textarea type="text" name="text" placeholder="comment-section" required></textarea>
+                             <!-- Feedback Section -->
+                            <input type="hidden" name="_next" value="https://primeprojects.netlify.app/blog.html">
                             <input type="hidden" name="_subject" value="New Contact Form Submission">
                        
                             <button type="submit">Submit</button>
@@ -1095,10 +1286,63 @@
         </div>
     </footer>
 
+<!--retnig start -->
+<script>
+    function initializeRatingSystem(ratingId) {
+      const stars = document.querySelectorAll(`#${ratingId} .star`);
+      const ratingValue = document.getElementById(`rating-value${ratingId.slice(-1)}`);
+      const message = document.getElementById(`message${ratingId.slice(-1)}`);
 
+      const messages = [
+        "Oh no! We could do better, huh?",
+        "Hmm... It could be better, but we appreciate your feedback!",
+        "Thanks for your rating! We'll keep working on it.",
+        "Great! We're happy you liked it.",
+        "Awesome! You're a star! Thank you for the highest rating!"
+      ];
+
+      stars.forEach((star, index) => {
+        star.addEventListener('mouseover', () => {
+          // Hover effect - Highlight stars up to hovered star
+          stars.forEach((s, i) => {
+            s.classList.toggle('active', i <= index);
+          });
+        });
+
+        star.addEventListener('mouseout', () => {
+          // Do nothing on mouse out as the clicked stars should remain golden
+        });
+
+        star.addEventListener('click', () => {
+          const rating = index + 1;
+
+          // Make stars golden based on rating
+          stars.forEach((s, i) => {
+            if (i < rating) {
+              s.classList.add('active');
+            } else {
+              s.classList.remove('active');
+            }
+          });
+
+          // Display rating
+          ratingValue.textContent = `You rated: ${rating} stars`;
+
+          // Display personalized message
+          message.textContent = messages[rating - 1];
+        });
+      });
+    }
+
+    // Initialize rating systems for all blog posts
+    initializeRatingSystem('rating1');
+    initializeRatingSystem('rating2');
+  </script>
+<!--retnig and -->
+     
     <script>
-        function rate(rating) {
-            document.getElementById('rating-value').textContent = rating;
+        function rate(rating1) {
+            document.getElementById('rating-value1').textContent = rating1;
         }
     </script>
 
@@ -1106,7 +1350,8 @@
      
     <script>
         const courses = [
-    { id: 'AI Cloud 1', name: 'AI Cloud The Future of AI and Its Impact', elementId: 'fullstack-level' },
+    { id: 'AI Cloud1', name: 'AI Cloud The Future of AI and Its Impact', elementId: 'AI Cloud1' },
+    { id: 'AI Robotics2', name: 'AI Robotics The Future of AI and Its Impact', elementId: 'AI Robotics2' }
   
         ];
 
@@ -1182,6 +1427,7 @@
     </script>
     
     <script>
+
         //sliding img strt
 let index = 0;
         const slides = document.querySelectorAll('.slide');
