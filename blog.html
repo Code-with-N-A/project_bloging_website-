@@ -618,294 +618,128 @@
     }
 }
 
-  /*sliding img start*/
-       /* Default styling for slider container */
-       .slider-container {
-    width: 100%;
-    height: 70vh; /* Set height relative to viewport height */
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(rgb(158, 205, 252), rgb(167, 177, 255));
-    display: flex; /* Centering content inside container */
-    justify-content: center; /* Center image horizontally */
-    align-items: center; /* Center image vertically */
-    object-fit: cover;
-    border: 1px solid rgb(255, 255, 255);
-}
-
-/* Image styling */
-.slide img {
-    max-width: 60%;  /* Ensures the image width stays within the container */
-    max-height: 18%; /* Ensures the image height stays within the container */
-    object-fit: contain; /* Ensure the image fits inside the container without distortion */
-    height: auto; /* Responsive height */
-    width: auto; /* Responsive width */
-    display: block; /* Image behaves like a block element */
-    padding-top: 0; /* Remove padding if not needed */
-}
-
-/* Media query for iPad screen sizes */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .slider-container {
-        height: 70vh; /* Slightly taller for iPad screens */
-    }
-
-    .slide img {
-        max-width: 100%; /* Ensure image takes full width of the container */
-        max-height: 100%; /* Ensure image height adjusts properly */
-        object-fit: contain; /* Maintain aspect ratio without cropping */
-    }
-}
-
-       
-          
+   /*sliding img start*/
+   .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            
+        }
 
         .slider {
             display: flex;
-            transition: transform 1s ease-in-out;
-           
+            transition: transform 1s ease;
         }
 
-        .slide {
-            width: 100%;
-            height: 100%; /* Make each slide fill the container's height */
-            flex-shrink: 0; /* Prevents slides from shrinking */
+        .slider-item {
+            flex: 0 0 100%;
             display: flex;
-            justify-content: space-between; /* Position text on left, image on right */
-            align-items: stretch; /* Stretch both image and text to match height */
-            position: relative;
-        }
-
-        
-
-        .slide-text {
-            width: 50%; /* Text takes up 50% width */
-            color: #000000;  /* Set text color to white */
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgb(253, 236, 139),rgb(227, 249, 102));
             padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .slider-item:hover {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .slider-item img {
+            max-width: 50%;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+
+        .slider-item h3 {
+            margin-top: 15px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .slider-item p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .slider-item-content {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start; /* Align text at the top */
-            align-items: flex-start; /* Align text to the left */
-            height: 100%; /* Ensure the text section fills the container's height */
-            box-sizing: border-box; /* Include padding in height calculation */
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
         }
 
-        .slide-text h2 {
-            margin: 0 0 10px 0;
-            font-size: 28px;
-            font-weight: bold;
+        .slider-item-text {
+            flex: 1;
+            padding: 10px;
+            max-width: 50%;
         }
 
-        .slide-text p {
-            font-size: 18px;
-            margin: 0;
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .slider-item h3 {
+                font-size: 1.5rem;
+            }
+
+            .slider-item p {
+                font-size: 1rem;
+            }
+
+            .slider-item img {
+                max-width: 50%; /* Image takes up 50% of the width */
+                margin-right: 10px;
+            }
+
+            .slider-item-text {
+                width: 50%; /* Text takes up 50% of the width */
+            }
         }
 
-        .dots {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
+        @media (max-width: 480px) {
+            .slider-item h3 {
+                font-size: 1.2rem;
+            }
+
+            .slider-item p {
+                font-size: 0.9rem;
+            }
+
+            .slider-item img {
+                max-width: 50%; /* Image takes up 50% of the width */
+                margin-right: 10px;
+            }
+
+            .slider-item-text {
+                width: 50%; /* Text takes up 50% of the width */
+            }
+        }
+
+        /* Dots for current slide indicator */
+        .dots-container {
+            text-align: center;
+            margin-top: 20px;
         }
 
         .dot {
-            width: 15px;
-            height: 15px;
+            display: inline-block;
+            height: 10px;
+            width: 10px;
             margin: 0 5px;
-            background-color: rgb(0, 0, 0);
+            background-color: #bbb;
             border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
 
-        .ctive {
-            background-color: rgb(0, 221, 255);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .slider-container {
-                height: 24vh; /* Adjust height for smaller screens */
-                object-fit: cover;
-                
-            }
-
-            .slide-text h2 {
-                font-size: 24px; /* Adjust heading size for smaller screens */
-                object-fit: cover;
-            }
-
-            .slide-text p {
-                font-size: 20px; /* Adjust paragraph size for smaller screens */
-                object-fit: cover;
-            }
-            .slide img {
-                width: 60%;
-                height: 34vh; /* Adjust image size for small screens */
-                max-height: 20vh;
-                max-width: 350px;
-                object-fit: cover;
-            }
-
-        }
-        @media (max-width: 820px) {
-            .slider-container {
-                height: 24vh; /* Adjust height for smaller screens */
-                object-fit: cover;
-                
-            }
-
-            .slide-text h2 {
-                font-size: 24px; /* Adjust heading size for smaller screens */
-                object-fit: cover;
-            }
-
-            .slide-text p {
-                font-size: 20px; /* Adjust paragraph size for smaller screens */
-                object-fit: cover;
-            }
-            .slide img {
-                width: 60%;
-                height: 20vh; /* Adjust image size for small screens */
-                max-height: 30vh;
-                max-width: 350px;
-                object-fit: cover;
-            }
-
-        }
-       
-        @media (max-width: 1024px) {
-            .slider-container {
-                height: 23vh; /* Adjust height for smaller screens */
-                object-fit: cover;
-                
-            }
-
-            .slide-text h2 {
-                font-size: 15px; /* Adjust heading size for smaller screens */
-                object-fit: cover;
-            }
-
-            .slide-text p {
-                font-size: 16px; /* Adjust paragraph size for smaller screens */
-                object-fit: cover;
-            }
-            .slide img {
-                width: 55%;
-                height: 24vh; /* Adjust image size for small screens */
-                max-height: 30vh;
-                max-width: 600px;
-                object-fit: cover;
-            }
-
-        }
-
-        @media (max-width: 480px) and (max-width: 912px) {
-            .slider-container {
-               
-                height: 15vh; /* Further adjust for very small screens */
-               
-            }
-           
-            .dot {
-                width: 12px;
-                height: 12px;
-                margin: 0 4px;
-                object-fit: cover;
-              
-            }
-
-            .slide-text h2 {
-                font-size: 10px; /* Adjust heading size further for small screens */
-                object-fit: cover;
-            }
-
-            .slide-text p {
-                font-size: 9px;
-                object-fit: cover; /* Adjust paragraph size further for small screens */
-            }
-
-            .slide img {
-                width: 60%;
-                height: 15vh; /* Adjust image size for small screens */
-                max-height: 220px;
-                object-fit: cover;
-            }
-        }
-       
-        @media (max-width: 412px) and (max-width: 915px) {
-            .slider-container {
-               
-                height: 21vh;
-                
-                 /* Further adjust for very small screens */
-               
-            }
-           
-            .dot {
-                width: 12px;
-                height: 12px;
-                margin: 0 4px;
-                object-fit: cover;
-            }
-
-            .slide-text h2 {
-                font-size: 15px; /* Adjust heading size further for small screens */
-                object-fit: cover;
-            }
-
-            .slide-text p {
-                font-size: 11px;
-                object-fit: cover; /* Adjust paragraph size further for small screens */
-            }
-
-            .slide img {
-                
-                width: 100%;
-                height: 25vh; /* Adjust image size for small screens */
-                max-width: 400px;
-                max-height: 160px;
-                object-fit: cover;
-               
-            }
-        }
-        @media (max-width: 390px) and (max-width: 844px) {
-            .slider-container {
-               
-                height: 19vh;
-                
-                 /* Further adjust for very small screens */
-               
-            }
-           
-            .dot {
-                width: 12px;
-                height: 12px;
-                margin: 0 4px;
-                object-fit: cover;
-               
-            }
-
-            .slide-text h2 {
-                font-size: 10px; /* Adjust heading size further for small screens */
-                object-fit: cover;
-            }
-
-            .slide-text p {
-                font-size: 8px;
-                object-fit: cover; /* Adjust paragraph size further for small screens */
-            }
-
-            .slide img {
-                
-                width: 100%;
-                height: 18vh; /* Adjust image size for small screens */
-                max-width: 300px;
-                max-height: 200px;
-                object-fit: cover;
-               
-            }
+        .active-dot {
+            background-color: #333;
         }
 
         /*sliding img and*/
@@ -994,31 +828,41 @@
     <!--img sliding code  Start-->
     <div class="slider-container">
         <div class="slider">
-            <div class="slide">
-                <div class="slide-text">
-                    <h2>AI Trends</h2>
-                    
-                    <p>Artificial Intelligence is transforming industries by automating processes and improving decision-making. 🤖💡</p>                </div>
-                <img src="https://www.ducatindia.com/_next/image?url=https%3A%2F%2Fadmin.ducatindia.com%2Fblog%2F1726579796102Generative%20ai.jpg&w=750&q=75" alt="Image 1">
+            <div class="slider-item">
+                <div class="slider-item-content">
+                    <img src="https://static.seaflux.tech/media/blog/9124688b-fb34-4f72-8e40-376feeec1420-infographic.png" alt="Image 1">
+                    <div class="slider-item-text">
+                        <h3>AI Languages</h3>
+                        <p>Python is the main language for AI, with R, Java, and C++ also used. TensorFlow and PyTorch are popular frameworks.</p>
+                    </div>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-text">
-                    <h2>AI Impact</h2>
-                    <p>AI allows machines to learn from data, making them smarter and more efficient. 📊💻</p>                </div>
-                <img src="https://www.aretove.com/wp-content/uploads/2024/01/AdobeStock_639749342-1.jpeg" alt="Image 2">
+            <div class="slider-item">
+                <div class="slider-item-content">
+                    <img src="https://img.edvido.com/ai_tools_blog_post_scaled_jpg-39ac9.jpg" alt="Image 2">
+                    <div class="slider-item-text">
+                        <h3>Top AI Tools</h3>
+                        <p>AI TensorFlow, PyTorch, Keras, scikit-learn, OpenCV, NLTK, aur spaCy popular tools hain.</p>
+                    </div>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-text">
-                    <h2>AI Future</h2>
-                    <p>The future of AI holds immense potential in sectors like healthcare, finance, and education. 🏥💰🎓</p>                </div>
-                <img src="https://agifineart.com/advice/wp-content/uploads/2024/09/ai-generated-8998353_1280.jpg.webp" alt="Image 3">
+            <div class="slider-item">
+                <div class="slider-item-content">
+                    <img src="https://undark.org/wp-content/uploads/2018/08/AIGUN-1480x833.jpg" alt="Image 3">
+                    <div class="slider-item-text">
+                        <h3>AI Weapons</h3>
+                        <p> AI-powered weapons that operate without human control, risking errors and violations.</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+    </div>
+
+    <!-- Dots indicator below slider -->
+    <div class="dots-container">
+        <span class="dot" id="dot1"></span>
+        <span class="dot" id="dot2"></span>
+        <span class="dot" id="dot3"></span>
     </div>
     <!--img sliding code AND-->
 
@@ -1427,40 +1271,107 @@
     </script>
     
     <script>
+        // slider start code //
+        const slider = document.querySelector('.slider');
+        const dots = document.querySelectorAll('.dot'); // Dots for slide indicator
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.slider-item');
+        const totalItems = items.length;
 
-        //sliding img strt
-let index = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        const totalSlides = slides.length;
+        // Clone the first item and append it to the end of the slider for infinite loop
+        const firstItem = items[0].cloneNode(true);
+        slider.appendChild(firstItem);
 
-        function changeSlide() {
-            index++;
-            if (index >= totalSlides) {
-                index = 0;
-                // Move to the first image smoothly without any visible jump
-                document.querySelector('.slider').style.transition = 'none';
-                document.querySelector('.slider').style.transform = `translateX(0)`;
-                setTimeout(() => {
-                    document.querySelector('.slider').style.transition = 'transform 1s ease-in-out';
-                }, 50); // Short delay to allow the transition to reapply
-            } else {
-                const offset = -index * 100;
-                document.querySelector('.slider').style.transform = `translateX(${offset}%)`;
-            }
+        // Function to move the slider
+        function moveSlider() {
+            const offset = -currentIndex * 100;
+            slider.style.transform = `translateX(${offset}%)`;
 
-            // Update dot active class
-            dots.forEach(dot => dot.classList.remove('ctive'));
-            dots[index].classList.add('ctive');
+            // Update active dot
+            updateActiveDot();
         }
 
-        // Automatic slide change every 3 seconds
-        setInterval(changeSlide, 3000);
+        // Function to update active dot
+        function updateActiveDot() {
+            // Remove active class from all dots
+            dots.forEach(dot => dot.classList.remove('active-dot'));
 
-        // Initialize first dot as active
-        dots[index].classList.add('ctive');
-// sliding img and
+            // Add active class to the current dot
+            dots[currentIndex].classList.add('active-dot');
+        }
 
+        // Handle touch or mouse swipe
+        let startX = 0;
+        let endX = 0;
+        slider.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        slider.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            if (startX > endX) {
+                // Swipe left (next slide)
+                currentIndex = (currentIndex + 1) % (totalItems + 1);
+                moveSlider();
+            } else if (startX < endX) {
+                // Swipe right (previous slide)
+                currentIndex = (currentIndex - 1 + totalItems + 1) % (totalItems + 1);
+                moveSlider();
+            }
+        });
+
+        // Handle mouse drag (for desktop users)
+        let isDragging = false;
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                endX = e.clientX;
+            }
+        });
+
+        slider.addEventListener('mouseup', () => {
+            if (isDragging) {
+                if (startX > endX) {
+                    // Drag left (next slide)
+                    currentIndex = (currentIndex + 1) % (totalItems + 1);
+                    moveSlider();
+                } else if (startX < endX) {
+                    // Drag right (previous slide)
+                    currentIndex = (currentIndex - 1 + totalItems + 1) % (totalItems + 1);
+                    moveSlider();
+                }
+                isDragging = false;
+            }
+        });
+
+        // Automatic Slider without reversing
+        function autoSlide() {
+            currentIndex = (currentIndex + 1) % (totalItems + 1);
+            moveSlider();
+
+            if (currentIndex === totalItems) {
+                setTimeout(() => {
+                    slider.style.transition = 'none';
+                    slider.style.transform = `translateX(0%)`;
+                    currentIndex = 0;
+                    setTimeout(() => {
+                        slider.style.transition = 'transform 1s ease';
+                    }, 50);
+                }, 1000);
+            }
+        }
+
+        // Set interval for automatic sliding
+        setInterval(autoSlide, 3000); // Slide every 3 seconds
+
+        // Initially update the active dot
+        updateActiveDot();
+         // slider and code //
     </script>
+    
 </body>
 </html>
