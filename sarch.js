@@ -28,6 +28,9 @@ const pages = [
     {name: " task manager", url: "https://primeprojects.netlify.app/task_menegar"},
     {name: "img to pdf ", url: "https://primeprojects.netlify.app/img_to_pdf_5G"},
     {name: " The Coding Blueprint map", url: "Roode_Map.html"},
+    {name: " Password Cheker", url: "Password_chekar.html"},
+    {name: "PDFshift", url: "pdf_to_img.html"},
+
 
 
   ];

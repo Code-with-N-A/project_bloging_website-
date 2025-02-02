@@ -1236,6 +1236,27 @@
                     <div class="slider-item-text">
                         <h3>5G technology</h3>
                         <p>5G technology provides faster speeds, lower latency, and enhanced connectivity for advanced applications.</p>
+                    </div> 
+                   </div>         
+            </div>
+            <div class="slider-item">
+                <div class="slider-item-content">
+                    <img src="https://www.sysinfotools.com/asset/img/when-to-use/Pdf-to-Jpg.webp" alt="Image 3">
+                    <div class="slider-item-text">
+                        <h3>PDFshift</h3>
+                        <p>
+                            <strong>PDFshift</strong> converts PDFs to high-quality images with easy page selection and quick downloads.
+                        </p>
+                    </div>          
+            </div>
+        </div>
+            <div class="slider-item">
+                <div class="slider-item-content">
+                    <img src="https://media.istockphoto.com/id/1401555201/photo/weak-password-words-on-the-screen-in-the-dark.jpg?s=612x612&w=0&k=20&c=zwD3wXz5fBNCXCULLMTfsYbi9vtoPnMrvCfHG1KuatE=" alt="Image 3">
+                    <div class="slider-item-text">
+                        <h3>Password Strength</h3>
+                        <p>Secure your digital world with a strong password because your online safety and privacy matter!</p>
+
                     </div>          
             </div>
         </div>
@@ -1246,6 +1267,8 @@
         <span class="dot" id="dot1"></span>
         <span class="dot" id="dot2"></span>
         <span class="dot" id="dot3"></span>
+        <span class="dot" id="dot4"></span>
+        <span class="dot" id="dot5"></span>
     </div>
     <!--img sliding code AND-->
       
@@ -1404,6 +1427,13 @@
             <h3>Password Strength</h3>
             <p>Secure your digital world with a password that’s as strong as your protection needs – because your security matters!</p>
         </div>
+        <div class="content-box" onclick="PDFshift('pdf_to_img')">
+            <img src="https://www.sysinfotools.com/asset/img/when-to-use/Pdf-to-Jpg.webp" alt="img">
+            <h3>PDFshift</h3>
+            <p>
+                <strong>PDFshift</strong> is a tool for converting PDFs to high-quality images (PNG, JPG). It offers easy page selection, HD conversion, and quick downloads for a seamless user experience.
+              </p>
+             </div>
     </section>
 
     
@@ -1623,9 +1653,9 @@ const stars = document.querySelectorAll('.stars input');
 
          // Updates array containing messages and their corresponding URLs
          const updates = [
+            { message: "New feature: PDFshift", url: "pdf_to_img.html" },
             { message: "New feature: Password Strength", url: "password_chekar.html" },
             { message: "New feature: Latest Blogs", url: "blog.html" },
-            { message: "New feature: img to pdf ", url: "https://code-with-n-a.github.io/img-to-pdf/" },
             { message: "New feature: The Coding Blueprint ", url: "Roode_Map.html" },
             
         ];
@@ -1678,9 +1708,13 @@ const stars = document.querySelectorAll('.stars input');
     function blogs(blog) {
     window.location.href = "blog.html";
 }
-    //  blogs
+    //  password chakar
     function password(password) {
     window.location.href = "password_chekar.html";
+}
+    //  pdf_to_img.html
+    function PDFshift(PDFshift) {
+    window.location.href = "pdf_to_img.html";
 }
 
 
