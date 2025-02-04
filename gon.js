@@ -9,7 +9,7 @@
                 setTimeout(() => {
                     // Redirect to registration page if the user hasn't registered
                     window.location.href = "ragistretion.html"; // Replace with your registration page URL
-                }, 10000); // 10000 milliseconds = 10 seconds
+                }, 8000); // 10000 milliseconds = 10 seconds
             }
         }
         
