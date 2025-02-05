@@ -174,6 +174,7 @@
             max-width: 200px;
             margin-bottom: 20px;
             border-radius: 10px;
+
         
 
         }
@@ -307,11 +308,94 @@
                 font-size: 16px;
             }
         }
+        /* icon*/
+        /* Profile Icon */
+.profile-icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #007bff;
+    border-radius: 50%;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-icon:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.1);
+}
+
+/* Profile Popup */
+.profile-popup {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    z-index: 100;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.profile-popup p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.profile-popup button {
+    padding: 10px;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.profile-popup button:hover {
+    background-color: #0056b3;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logout Button Styling */
+.profile-popup button#logoutBtn {
+    background-color: #dc3545;
+}
+
+.profile-popup button#logoutBtn:hover {
+    background-color: #c82333;
+}
 
     </style>
 </head>
 <body>
-    
+     <i class="fas fa-user profile-icon" id="profileIcon"></i>
+
+    <!-- Profile Popup -->
+    <div class="profile-popup" id="profilePopup">
+        <p id="storedEmail">Your email will appear here...</p>
+        <button id="logoutBtn">Logout</button>
+    </div>
     <div class="form-wrapper">
        
         <!-- Left Section (Logo & Intro) -->
@@ -363,21 +447,48 @@
 
     <script>
         function submitRegistration() {
-            // Delay the JS code after the form submission
-            setTimeout(function () {
-                // Simulate successful registration by setting localStorage
-                localStorage.setItem('isRegistered', 'true');
+            // Store the email in localStorage and set a cookie
+            const email = document.getElementById('email').value;
+            localStorage.setItem('email', email);
+            document.cookie = "email=" + email + ";path=/";
 
-                // Show alert indicating successful submission
+            // Simulate successful registration after a slight delay
+            setTimeout(function () {
+                localStorage.setItem('isRegistered', 'true');
                 alert('Registration successful!');
-            }, 100); // 100ms delay for better email sending functionality
+            }, 100);
+        }
+
+        // Show stored email when the Profile icon is clicked
+        document.getElementById('profileIcon').addEventListener('click', function() {
+            const storedEmail = localStorage.getItem('email') || getCookie("email");
+            if (storedEmail) {
+                document.getElementById('storedEmail').textContent = `Logged in as: ${storedEmail}`;
+                document.getElementById('profilePopup').style.display = 'block';
+            }
+        });
+
+        // Logout and clear email from localStorage and cookies
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            // Clear the localStorage
+            localStorage.removeItem('email');
+            localStorage.removeItem('isRegistered');
+
+            // Clear cookies
+            document.cookie = "email=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+
+            document.getElementById('storedEmail').textContent = '';
+            document.getElementById('profilePopup').style.display = 'none';
+            alert('Logged out successfully!');
+        });
+
+        // Function to get the value of a cookie by its name
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
         }
     </script>
-<script>
-   function go(){
-        window.location.href='index.html';
-    }
-   
-</script>
+
 </body>
 </html>
