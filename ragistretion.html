@@ -463,7 +463,7 @@
         document.getElementById('profileIcon').addEventListener('click', function() {
             const storedEmail = localStorage.getItem('email') || getCookie("email");
             if (storedEmail) {
-                document.getElementById('storedEmail').textContent = `Logged in as: ${storedEmail}`;
+                document.getElementById('storedEmail').textContent = `Login as: ${storedEmail}`;
                 document.getElementById('profilePopup').style.display = 'block';
             }
         });
