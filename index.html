@@ -126,7 +126,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
         
         .language-marquee {
@@ -195,7 +194,7 @@
     body {
             background-color: #0b0c10;
             color: white;
-            font-size: 16px;
+            font-size: 17px;
             overflow-x: hidden;
         }
         @keyframes slideIn {
@@ -214,12 +213,12 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             color: #66fcf1;
+
         }
 
         .hero::after {
@@ -373,12 +372,12 @@
   .toggle-btn {
             display: none;
             position: absolute;
-            top: 10px;
+            top: 5px;
             right: 0px;
             width: 40px;
             height: 30px;
             cursor: pointer;
-            z-index: 1002;
+            z-index: 1000;
             transition: all 0.3s ease;
            
            
@@ -387,34 +386,33 @@
         .toggle-btn div {
             width: 70%;
             height: 3px;
-            background-color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
             margin: 6px 0;
             transition: all 0.3s ease;
+
            
         }
 
         /* Toggle Menu */
         .toggle-menu {
             position: fixed;
-            top: 40px;
+            top: 85px;
             right: -250px;
-            width: 10px;
-            height: 40%;
+            width: 100px;
+            height: 30%;
             background-color: rgb(0, 0, 0);
             transition: right 0.5s ease;
             z-index: 1001;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-            justify-content: center;
+            align-items:  center;
            
          
            
         }
 
         .toggle-menu.active {
-            right: 0;
+            left: 0;
           
         }
 
@@ -425,7 +423,7 @@
             margin: 10px 0;
             animation: blink 1s infinite alternate;
             transition: color 0.3s ease;
-            padding: 20px;
+            padding: 10px;
            
            
            
@@ -517,11 +515,11 @@
             transform: translateY(-11px) rotate(-45deg);
         }
         .i img{
-            width: 10%;
-           border-radius: 100%;
-           position: absolute;
-           padding: 5px;
-           
+          
+            width: 70px; /* Adjust the size of the logo */
+            height: auto;
+            border-radius: 50%; /* Make the logo circular */
+            border: 2px solid #fff; /* Add border to the logo */
           
         }
        
@@ -1042,7 +1040,7 @@
 
         /* may project h1 */
         .pro{
-            background-color: lavender;
+            background-color: whitesmoke; /* Updated background color */
             padding: 20px;
             color: black;
         }
@@ -1225,6 +1223,11 @@
     </div>
     <!--srch bar-->
     <div class="container">
+        <div class="i">
+            <img src="img/logo2.png" alt="logo">
+    
+           </div>
+       
         <div class="search-container" id="searchContainer">
           <input type="text" class="search-bar" id="searchInput" placeholder="Search..." oninput="showSuggestions(this.value)" onkeydown="checkEnter(event)">
           <span class="search-icon" onclick="performSearch()">&#128269;</span>
@@ -1234,9 +1237,24 @@
             <button onclick="sinUp()">SignUp</button>
            </div>
       </div>
-      
+
       <!--img sliding code  Start-->
       <div class="slider-container">
+        <div class="toggle-btn" id="toggle-btn">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    
+        <!-- Toggle Menu -->
+        <div class="toggle-menu" id="toggle-menu">
+            <a href="index.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="servises.html">Services</a>
+            <a href="contect.html">Contact</a>
+        </div>
+       
         <div class="slider">
             <div class="slider-item">
                 <div class="slider-item-content">
@@ -1300,31 +1318,10 @@
     </div>
     <!--img sliding code AND-->
       
-     <!-- Toggle Button -->
-    <div class="image-container">
-        <div class="toggle-btn" id="toggle-btn">
-            <div></div>
-            <div></div>
-            <div></div>
-            
-            <div></div>
-        </div>
     
-        <!-- Toggle Menu -->
-        <div class="toggle-menu" id="toggle-menu">
-            <a href="index.html">Home</a>
-            <a href="About.html">About</a>
-            <a href="servises.html">Services</a>
-            <a href="contect.html">Contact</a>
-        </div>
-
+  
+     <div class="image-container">
        
-    
-        
-        <div class="i">
-            <img src="img/logo2.png" alt="logo">
-
-           </div>
         <img class="background-image" src="img/prime1+1.png" alt="img">
         <div class="overlay-text">
            
