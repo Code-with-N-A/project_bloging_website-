@@ -8,7 +8,7 @@
 <meta name="description" content="Prime Projects is a one-stop solution for learning programming. Build projects, explore programming blogs, use tools like image to PDF converter, extract pages from PDFs, convert PDFs to images, generate strong passwords, manage tasks, and create QR codes. Learn coding the practical way!">
 
 <!-- Favicon -->
-<link rel="icon" href="https://primeprojects.netlify.app/favicon-32x32.png" type="image/png">
+<link rel="icon" href="img/favicon-32x32.png" type="image/png">
 
 <!-- Author and Language -->
 <meta name="author" content="Prime Projects">
@@ -18,14 +18,14 @@
 <meta property="og:title" content="Prime Projects - Learn Programming, Build Projects, and Access Developer Tools">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://primeprojects.netlify.app/">
-<meta property="og:image" content="https://primeprojects.netlify.app/favicon-32x32.png">
+<meta property="og:image" content="img/favicon-32x32.png">
 <meta property="og:description" content="Access a wide range of programming projects, blogs, coding tools, and more. Develop your programming skills with practical projects and helpful tools on Prime Projects.">
 <meta property="og:site_name" content="Prime Projects">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Prime Projects - Learn Programming, Build Projects, and Access Developer Tools">
 <meta name="twitter:description" content="Learn to code with projects, read blogs on programming topics, and use helpful tools like QR code generators, PDF converters, and more.">
-<meta name="twitter:image" content="https://primeprojects.netlify.app/favicon-32x32.png">
+<meta name="twitter:image" content="img/favicon-32x32.png">
 
 <!-- Keywords for SEO (Enhanced for More Programming-related Topics) -->
 <meta name="keywords" content="programming, coding, coding projects, developer tools, programming blogs, image to pdf converter, pdf page extraction, pdf to image, qr code generator, task manager, strong password generator, python projects, web development, software development, code learning, tech blog, JavaScript, HTML, CSS, AI development, data structures, algorithms, backend development, frontend development, mobile app development, cloud computing, version control, GitHub projects, machine learning, deep learning, coding tutorials, developer productivity tools, competitive programming, full-stack development, web app development, software engineering, DevOps, coding challenges">
@@ -51,7 +51,7 @@
 
 <!-- App-specific meta tags -->
 <meta name="application-name" content="Prime Projects">
-<meta name="msapplication-TileImage" content="https://primeprojects.netlify.app/favicon-32x32.png">
+<meta name="msapplication-TileImage" content="img/favicon-32x32.png">
 <meta name="msapplication-TileColor" content="#000000">
 <meta name="theme-color" content="#000000">
 
@@ -127,7 +127,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+       
         .language-marquee {
       width: 100%;
       overflow: hidden;
@@ -192,10 +192,11 @@
 
 
     body {
-            background-color: #0b0c10;
+            background-color: #000000;
             color: white;
             font-size: 17px;
             overflow-x: hidden;
+
         }
         @keyframes slideIn {
     0% {
@@ -448,13 +449,13 @@
         /* Keyframes for the blinking effect */
         @keyframes blink {
             0% {
-                color: #66fcf1;
+                color: #ffffff;
             }
             50% {
-                color: #ff69b4;
+                color: #2fff00;
             }
             100% {
-                color: #ffff00;
+                color: #ff0000;
             }
         }
 
@@ -843,7 +844,7 @@
 
         form input, form textarea {
             margin-bottom: 10px;
-            width: 100%;
+            width: 95%;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
@@ -851,13 +852,13 @@
 
         form input[type="submit"] {
             width: auto;
-            background-color: #28a745;
+            background-color: #ff9800;
             color: white;
             cursor: pointer;
         }
 
         form input[type="submit"]:hover {
-            background-color: #218838;
+            background-color: #ff9800;
         }
 
         .badge-progress {
@@ -869,7 +870,7 @@
         .progress-bar {
             width: 0;
             height: 7px;
-            background-color: #4caf50;
+            background-color: #4caaaf;
             border-radius: 10px;
             transition: width 0.5s ease;
         }
@@ -920,7 +921,7 @@
         }
 
         .footer-section p, .footer-section a {
-            color: #aaa;
+            color: #ffffff;
             margin-bottom: 10px;
             text-decoration: none;
         }
@@ -930,11 +931,12 @@
         }
 
         .social-icons a {
-            color: #fff;
-            font-size: 18px;
+            color: #43d45e;
+            font-size: 28px;
             margin: 0 10px;
             text-decoration: none;
             transition: color 0.3s ease;
+           
         }
 
         .social-icons a:hover {
@@ -1060,13 +1062,12 @@
             width: 100%;
             max-width: 1500px;
             overflow: hidden;
-           
-            
         }
 
         .slider {
             display: flex;
             transition: transform 1s ease;
+           
            
         }
 
@@ -1075,12 +1076,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color:rgb(211, 244, 173);
-            padding: 20px;
+            background:linear-gradient(45deg, #f0f8ff, #e0f7fa);
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-          
             transition: transform 0.5s ease, opacity 0.5s ease;
+            color: black;
+            padding: 10px;
         }
 
         .slider-item:hover {
@@ -1089,7 +1090,7 @@
         }
 
         .slider-item img {
-            max-width: 50%;
+            max-width: 20%;
             height: auto;
             border-radius: 10px;
             margin-right: 20px;
@@ -1098,14 +1099,12 @@
 
         .slider-item h3 {
             margin-top: 15px;
-            font-size: 2rem;
-            color: #000000;
+            font-size: 2rem; 
         }
 
         .slider-item p {
             font-size: 1.1rem;
-            color: #000000;
-       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
            
         }
 
@@ -1194,8 +1193,7 @@
    font-weight: bold;
   }
   .sin button:hover {
-    background-color: #8da1fe;
-    border: 2px solid rgb(0, 0, 0);
+    background-color: #68d1f4;
     color: #000000;
 
   }
@@ -1260,11 +1258,11 @@
         <div class="slider">
             <div class="slider-item">
                 <div class="slider-item-content">
-                    <img src="https://www.reuters.com/resizer/v2/MLGN25NYVJIDLPRGLWHWS4PC3Q.jpg?auth=7e09e6812881b63adf69cc478f6d53486bfd96c4c2daa35d2001e65440d8019c&width=640&quality=80" alt="Image 1">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPecz7s4CAL29Q8XVWUvDsmst7QQzWUZJMKg&s" alt="Image 1">
                     <div class="slider-item-text">
-                        <h3>DeepSeek AI</h3>
-                       
-                            <p>A cost-effective AI model like DeepSeek can be developed in India, making AI technology more accessible and affordable.</p>
+                        <h3>DeepSeek AI V/S ChatGPT</h3>
+                        <p>
+                            <strong>DeepSeek AI</strong> is affordable, while <strong>ChatGPT</strong> offers advanced features.                        
                     </div>
                 </div>
             </div>
@@ -1309,6 +1307,7 @@
             </div>
         </div>
     </div>
+    </div>
 
     <!-- Dots indicator below slider -->
     <div class="dots-container">
@@ -1336,9 +1335,6 @@
            </div>
     </div>
    
-
-
-
     <div class="text">
         <h2>PrimeProjects</h2>
         <p><strong style="color: red;">CodeWith_N.A </strong>is your one-stop destination for mastering programming. We provide comprehensive tutorials, real-world projects, and coding challenges designed for both <strong>beginners and experienced developers.</strong> Our platform covers a variety of programming languages, helping you enhance your skills and build practical solutions. With interactive tools and a supportive community, you'll have everything you need to excel in coding. Start your programming journey with us today and unlock your full potential as a coder!</p>
@@ -1388,7 +1384,6 @@
 </div>
 <video width="100%" controls id="myVideo">
     <source src="img/VN20241121_182837.mp4" type="video/mp4">
-    Your browser does not support the video tag.
 </video>
   
 
@@ -1614,8 +1609,9 @@
         <div class="footer-section newsletter">
             <h3>Newsletter</h3>
             <p>Subscribe to our newsletter to get the latest updates directly to your inbox.</p>
-            <form>
+            <form action="https://formsubmit.co/codewithna73@gmail.com" method="POST">
                 <input  type="email" placeholder="Enter your email">
+                <input type="hidden" name="_next" value="https://primeprojects.netlify.app/">
                 <button type="submit">Subscribe</button>
             </form>
         </div>
@@ -1842,7 +1838,7 @@ const stars = document.querySelectorAll('.stars input');
         }
 
         // Set interval for automatic sliding
-        setInterval(autoSlide, 3000); // Slide every 3 seconds
+        setInterval(autoSlide, 5000); // Slide every 3 seconds
 
         // Initially update the active dot
         updateActiveDot();
