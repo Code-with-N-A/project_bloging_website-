@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            cursor: pointer;
+        }
+        #entries {
+            margin-top: 20px;
+            max-height: 500px; /* Adjust height for 7 rows */
+            overflow-y: auto; /* Vertical scroll if more than 7 entries */
+            overflow-x: hidden; /* Hide horizontal scroll */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        .entry button {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
+        #total {
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Bill System</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required><br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount" required><br>
+
+        <button onclick="addEntry()">Add Amount</button>
+        <button onclick="downloadPDF()">Download Bill</button>
+        <button onclick="deleteAll()">Delete All</button>
+
+        <div id="entries">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="entryTableBody">
+                    <!-- Entries will be populated here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="total">Total Amount: ₹0</div>
+    </div>
+
+    <script>
+        const { jsPDF } = window.jspdf;
+
+        // Function to load data from localStorage
+        function loadData() {
+            const entries = JSON.parse(localStorage.getItem('entries')) || [];
+            let totalAmount = 0;
+            const entriesContainer = document.getElementById('entryTableBody');
+            entriesContainer.innerHTML = '';
+
+            entries.forEach((entry, index) => {
+                totalAmount += entry.amount;
+                const entryRow = document.createElement('tr');
+                entryRow.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${entry.date}</td>
+                    <td>${entry.day}</td>
+                    <td>${entry.amount}</td>
+                    <td><button onclick="deleteEntry(${index})">Delete</button></td>
+                `;
+                entriesContainer.appendChild(entryRow);
+            });
+
+            document.getElementById('total').innerText = `Total Amount: ₹${totalAmount}`;
+        }
+
+        // Function to add an entry
+        function addEntry() {
+            const name = document.getElementById('name').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+
+            if (!name || isNaN(amount) || amount <= 0) {
+                alert('Please enter valid name and amount.');
+                return;
+            }
+
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleDateString();
+            const day = currentDate.toLocaleString('en-us', { weekday: 'long' });
+
+            const entries = JSON.parse(localStorage.getItem('entries')) || [];
+            entries.push({ name, amount, date: formattedDate, day: day });
+            localStorage.setItem('entries', JSON.stringify(entries));
+            loadData();
+        }
+
+        // Function to delete an entry
+        function deleteEntry(index) {
+            const entries = JSON.parse(localStorage.getItem('entries')) || [];
+            entries.splice(index, 1);
+            localStorage.setItem('entries', JSON.stringify(entries));
+            loadData();
+        }
+
+        // Function to delete all entries
+        function deleteAll() {
+            if (confirm('Are you sure you want to delete all entries?')) {
+                localStorage.removeItem('entries');
+                loadData();
+            }
+        }
+
+        // Function to download the PDF
+        function downloadPDF() {
+            const entries = JSON.parse(localStorage.getItem('entries')) || [];
+            if (entries.length === 0) {
+                alert('No entries available to download.');
+                return;
+            }
+
+            const doc = new jsPDF();
+            doc.setFontSize(16);
+            doc.setTextColor(0, 0, 0);
+
+            // Get user's name
+            const name = document.getElementById('name').value;
+            if (!name) {
+                alert("Please enter your name before downloading.");
+                return;
+            }
+
+            // Add title to PDF
+            doc.text(`Bill for ${name}`, 14, 10);
+            doc.setFontSize(12);
+
+            // Table headers
+            const headers = ['NO', 'Date', 'Day', 'Amount'];
+            const data = entries.map((entry, index) => [
+                index + 1,
+                entry.date,
+                entry.day,
+                entry.amount
+            ]);
+
+            // Add table to PDF
+            doc.autoTable({
+                head: [headers],
+                body: data,
+                theme: 'grid',
+                headStyles: { fillColor: [0, 102, 204] },  // Dark blue header
+                alternateRowStyles: { fillColor: [245, 245, 245] }, // Light grey rows
+                styles: { fontSize: 10, textColor: [0, 0, 0] }, // Dark text color
+            });
+
+            // Add total amount at the bottom
+            const totalAmount = entries.reduce((acc, entry) => acc + entry.amount, 0);
+            doc.text(`Total Amount: ${totalAmount}`, 14, doc.lastAutoTable.finalY + 10);
+
+            // Download PDF
+            doc.save(`bill_${name}.pdf`);
+        }
+
+        // Load data on page load
+        window.onload = loadData;
+    </script>
+</body>
+</html>
