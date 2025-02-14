@@ -1166,8 +1166,10 @@
   }
     </style>
     <link rel="stylesheet" href="srach.css">
+    
 </head>
 <body>
+    <link rel="stylesheet" href="indicatar.css">
   <!-- Loader Wrapper strat -->
   <link rel="stylesheet" href="loder.css">
   <script src="loder.js"></script>
@@ -1307,6 +1309,15 @@
         <p><strong style="color: red;">CodeWith_N.A </strong>is your one-stop destination for mastering programming. We provide comprehensive tutorials, real-world projects, and coding challenges designed for both <strong>beginners and experienced developers.</strong> Our platform covers a variety of programming languages, helping you enhance your skills and build practical solutions. With interactive tools and a supportive community, you'll have everything you need to excel in coding. Start your programming journey with us today and unlock your full potential as a coder!</p>
     </div>
    
+ <!--indicatar of may web start-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="indicatar">
+    <!-- Time Display at the Top -->
+<div id="clock"></div><br>
+   <canvas id="lineChart"></canvas>
+</div>
+<!--indicatar of may web end-->
+
 <div class="language-marquee">
     <div class="marquee-container">
       <!-- First Line - Right to Left -->
@@ -1823,7 +1834,103 @@ const stars = document.querySelectorAll('.stars input');
         // Initially update the active dot
         updateActiveDot();
 
+
+
+        // indiketar start
+        var ctx = document.getElementById('lineChart').getContext('2d');
+
+        function generateDateLabels() {
+            let labels = [];
+            let currentDate = new Date();
+            for (let i = 4; i >= 0; i--) {
+                let date = new Date(currentDate);
+                date.setDate(currentDate.getDate() - i); // Subtract days to get previous dates
+                labels.push(date.toISOString().split('T')[0]); // Format the date as 'YYYY-MM-DD'
+            }
+            return labels;
+        }
+
+        var primeData = {
+            labels: generateDateLabels(),
+            datasets: [{
+                label: 'Users',
+                data: [122, 124, 129, 132, 134], // Initial data
+                borderColor: 'rgba()', 
+                backgroundColor: 'rgba(75, 192, 192, 1)', 
+                borderWidth: 1,
+                pointRadius: 6, 
+                pointBackgroundColor: 'rgba(75, 192,192 , 1)', 
+                tension: 0.3,
+                cubicInterpolationMode: 'monotone'
+            }]
+        };
+
+        var options = {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                     
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                      
+                    },
+                    suggestedMin: 120,
+                    suggestedMax: 140
+                }
+            },
+            animation: {
+                duration: 1000,
+                easing: 'easeInOutQuad'
+            },
+            plugins: {
+                tooltip: {
+                    mode: 'nearest',
+                    intersect: false
+                }
+            }
+        };
+
+        var lineChart = new Chart(ctx, {
+            type: 'line',
+            data: primeData,
+            options: options
+        });
+
+        setInterval(function() {
+            // Update the chart data
+            var newData = primeData.datasets[0].data.map(price => price + (Math.random() * 5 - 2.5));
+            lineChart.data.datasets[0].data = newData;
+
+            // Update the labels (dates) dynamically
+            primeData.labels = generateDateLabels();
+            lineChart.data.labels = primeData.labels;
+
+            lineChart.update();
+
+            updateClock();
+        }, 5000);
+
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours().toString().padStart(2, '0');
+            var minutes = now.getMinutes().toString().padStart(1, '0');
+            var seconds = now.getSeconds().toString().padStart(2, '0');
+            var timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').innerText = "Time: " + timeString;
+        }
+
+        updateClock();
+   
+
+        //indicator and
+
        
     </script>
+
 </body>
 </html>
