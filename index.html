@@ -164,6 +164,7 @@
             font-size: 17px;
             overflow-x: hidden;
 
+           
         }
         @keyframes slideIn {
     0% {
@@ -186,6 +187,7 @@
             align-items: center;
             position: relative;
             color: #66fcf1;
+           
 
         }
 
@@ -1141,10 +1143,12 @@
             background-color: #ffffff;
             border-radius: 50%;
             transition: background-color 0.3s ease;
+            border: 2px solid black;
         }
 
         .active-dot {
             background-color: #00f2ff;
+           
         }
 
         /*sliding img and*/
@@ -1165,11 +1169,12 @@
 
   }
     </style>
-    <link rel="stylesheet" href="srach.css">
     
 </head>
 <body>
-    <link rel="stylesheet" href="indicatar.css">
+    <!-- sarchbar -->
+    <link rel="stylesheet" href="srach.css">
+   
   <!-- Loader Wrapper strat -->
   <link rel="stylesheet" href="loder.css">
   <script src="loder.js"></script>
@@ -1179,8 +1184,8 @@
    </div>
  <!-- Loader Wrapper and -->
 
-    <script src="sarch.js"></script>
-    <script src="sin.js"></script>
+ <script src="sarch.js"></script>
+ <script src="sin.js"></script>
  
      <!-- Modal structure -->
      <div id="updateModal" class="modal">
@@ -1310,12 +1315,40 @@
     </div>
    
  <!--indicatar of may web start-->
+ <link rel="stylesheet" href="indicatar.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<div class="indicatar">
-    <!-- Time Display at the Top -->
-<div id="clock"></div><br>
-   <canvas id="lineChart"></canvas>
+<div id="dashboard">
+    <button id="darkModeToggle" class="togo">Theme</button>
+
+    <div class="stats">
+        <div class="stat">
+            <p>Total Users</p>
+            <p class="number" id="totalUsers"></p>
+        </div>
+        <div class="stat">
+            <p>New Users</p>
+            <p class="number" id="newUsers"></p>
+            <p id="growthRate">Growth Rate: %</p>
+        </div>
+        <div class="stat">
+            <p>Active Users</p>
+            <p class="number" id="activeUsers"></p>
+            <p id="averageSessionTime">Avg Session Time:  min</p>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <canvas id="userChart"></canvas>
+    <canvas id="userLocationChart"></canvas>
+    <canvas id="userTrendChart"></canvas>
+
+    <div class="spinner" id="loadingSpinner">
+        <img src="https://www.w3.org/2000/svg" alt="Loading..." />
+    </div>
+
+   
 </div>
+
 <!--indicatar of may web end-->
 
 <div class="language-marquee">
@@ -1837,95 +1870,146 @@ const stars = document.querySelectorAll('.stars input');
 
 
         // indiketar start
-        var ctx = document.getElementById('lineChart').getContext('2d');
-
-        function generateDateLabels() {
-            let labels = [];
-            let currentDate = new Date();
-            for (let i = 4; i >= 0; i--) {
-                let date = new Date(currentDate);
-                date.setDate(currentDate.getDate() - i); // Subtract days to get previous dates
-                labels.push(date.toISOString().split('T')[0]); // Format the date as 'YYYY-MM-DD'
-            }
-            return labels;
+         // Dark Mode Persistence
+         if(localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
         }
 
-        var primeData = {
-            labels: generateDateLabels(),
-            datasets: [{
-                label: 'Users',
-                data: [122, 124, 129, 132, 134], // Initial data
-                borderColor: 'rgba()', 
-                backgroundColor: 'rgba(75, 192, 192, 1)', 
-                borderWidth: 1,
-                pointRadius: 6, 
-                pointBackgroundColor: 'rgba(75, 192,192 , 1)', 
-                tension: 0.3,
-                cubicInterpolationMode: 'monotone'
-            }]
-        };
-
-        var options = {
-            responsive: true,
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                     
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                      
-                    },
-                    suggestedMin: 120,
-                    suggestedMax: 140
-                }
-            },
-            animation: {
-                duration: 1000,
-                easing: 'easeInOutQuad'
-            },
-            plugins: {
-                tooltip: {
-                    mode: 'nearest',
-                    intersect: false
-                }
-            }
-        };
-
-        var lineChart = new Chart(ctx, {
-            type: 'line',
-            data: primeData,
-            options: options
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
         });
 
-        setInterval(function() {
-            // Update the chart data
-            var newData = primeData.datasets[0].data.map(price => price + (Math.random() * 5 - 2.5));
-            lineChart.data.datasets[0].data = newData;
+        // Data Initialization
+        let totalUsers = 0, newUsers = 0, activeUsers = 0;
+        let previousNewUsers = newUsers;
+        let totalSessionTime = 0, userSessions = 0;
+        let monthsData = [];  // Stores active user data per month
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-            // Update the labels (dates) dynamically
-            primeData.labels = generateDateLabels();
-            lineChart.data.labels = primeData.labels;
+        // February (current month) and last 5 months
+        const monthsToTrack = [new Date().getMonth(), new Date().getMonth() - 1, new Date().getMonth() - 2, new Date().getMonth() - 3, new Date().getMonth() - 4, new Date().getMonth() - 5];
+        const wrappedMonths = monthsToTrack.map(month => month < 0 ? month + 12 : month);
 
-            lineChart.update();
+        // Set initial months data
+        wrappedMonths.forEach((month, index) => {
+            monthsData[index] = { month: months[month], users: Math.floor(Math.random() * 100) };
+        });
 
-            updateClock();
-        }, 5000);
-
-        function updateClock() {
-            var now = new Date();
-            var hours = now.getHours().toString().padStart(2, '0');
-            var minutes = now.getMinutes().toString().padStart(1, '0');
-            var seconds = now.getSeconds().toString().padStart(2, '0');
-            var timeString = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('clock').innerText = "Time: " + timeString;
+        // Simulating random data for User Location distribution
+        function randomUserLocationData() {
+            return [
+                Math.floor(Math.random() * 100),
+                Math.floor(Math.random() * 100),
+                Math.floor(Math.random() * 100),
+                Math.floor(Math.random() * 100)
+            ];
         }
 
-        updateClock();
-   
+        // Fetching data at regular intervals
+        setInterval(() => {
+            totalUsers += Math.floor(Math.random() * 10);
+            newUsers += Math.floor(Math.random() * 5);
+            activeUsers += Math.floor(Math.random() * 5);
+
+            let growthRate = ((newUsers - previousNewUsers) / previousNewUsers) * 100;
+            previousNewUsers = newUsers;
+
+            let sessionTime = Math.floor(Math.random() * 60);
+            totalSessionTime += sessionTime;
+            userSessions++;
+            let averageSessionTime = totalSessionTime / userSessions;
+
+            // Update the stats in HTML
+            document.getElementById('totalUsers').textContent = totalUsers;
+            document.getElementById('newUsers').textContent = newUsers;
+            document.getElementById('activeUsers').textContent = activeUsers;
+            document.getElementById('growthRate').textContent = `Growth Rate: ${growthRate.toFixed(2)}%`;
+            document.getElementById('averageSessionTime').textContent = `Avg Session Time: ${averageSessionTime.toFixed(2)} min`;
+
+            // Update Monthly Data (simulating arrival of new active users each month)
+            const newMonthData = { month: months[wrappedMonths[0]], users: activeUsers };
+            monthsData.unshift(newMonthData);
+            if (monthsData.length > 6) {
+                monthsData.pop();
+            }
+
+            // Update Trend Chart with new user data for each month
+            userTrendChart.data.labels = monthsData.map(data => data.month);
+            userTrendChart.data.datasets[0].data = monthsData.map(data => data.users);
+            userTrendChart.update();
+
+            // Update Stats Bar Chart with new user data
+            userChart.data.datasets[0].data = [totalUsers, newUsers, activeUsers];
+            userChart.update();
+
+            // Update User Location Chart (Pie chart data update)
+            userLocationChart.data.datasets[0].data = randomUserLocationData();
+            userLocationChart.update();
+
+        }, 6000); // Every 3 seconds data updates
+
+        // Chart.js Configuration for User Stats (Bar Chart)
+        var userChart = new Chart(document.getElementById('userChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Total Users', 'New Users', 'Active Users'],
+                datasets: [{
+                    label: 'Users',
+                    data: [totalUsers, newUsers, activeUsers],
+                    backgroundColor: ['#FF5733', '#33FF57', '#5733FF'],
+                    borderColor: ['#FF5733', '#33FF57', '#5733FF'],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
+        });
+
+        // User Location Chart (Pie Chart)
+        var userLocationChart = new Chart(document.getElementById('userLocationChart').getContext('2d'), {
+            type: 'pie',
+            data: {
+                labels: ['USA', 'India', 'Europe', 'Others'],
+                datasets: [{
+                    label: 'User Distribution',
+                    data: randomUserLocationData(), // Initial random data
+                    backgroundColor: ['#FF5733', '#33FF57', '#5733FF', '#FFBD33'],
+                }]
+            }
+        });
+
+        // User Trend Chart (Line Chart for Active Users)
+        var userTrendChart = new Chart(document.getElementById('userTrendChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: monthsData.map(data => data.month),
+                datasets: [{
+                    label: 'Active Users Over Time',
+                    data: monthsData.map(data => data.users),
+                    fill: false,
+                    borderColor: '#4CAF50',
+                    tension: 0.1
+                }]
+            }
+        });
+
+        // Export data to CSV
+        function exportToCSV() {
+            const data = `Total Users,New Users,Active Users\n${totalUsers},${newUsers},${activeUsers}\n`;
+            const blob = new Blob([data], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.setAttribute('href', URL.createObjectURL(blob));
+            link.setAttribute('download', 'user_data.csv');
+            link.click();
+        }
+
 
         //indicator and
 
