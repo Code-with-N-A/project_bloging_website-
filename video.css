@@ -1,0 +1,50 @@
+ /* Universal video container for responsiveness */
+ .video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Media query for devices smaller than 768px (Mobile Phones, Small Tablets) */
+  @media (max-width: 768px) {
+    .video-container {
+      padding-bottom: 56.25%; /* Keep 16:9 ratio for phones and small tablets */
+    }
+  }
+
+  /* Media query for medium devices (Tablets, iPads, larger phones) */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .video-container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding-bottom: 56.25%; /* Maintain 16:9 ratio */
+    }
+  }
+
+  /* Media query for large screens (Laptops, Desktops) */
+  @media (min-width: 1024px) {
+    .video-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-bottom: 56.25%; /* Keep same ratio but allow larger size */
+    }
+  }
+
+  /* Extra-large screens (Desktops with wide displays) */
+  @media (min-width: 1200px) {
+    .video-container {
+      max-width: 1200px;
+      padding-bottom: 40%; /* Slightly different ratio for big screens */
+    }
+  }
